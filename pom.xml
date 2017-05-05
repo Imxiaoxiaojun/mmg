@@ -93,8 +93,14 @@
             <artifactId>spring-hibernate3</artifactId>
             <version>2.0.8</version>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>4.3.8.Final</version>
+		</dependency>
 
-        <!--hibernate end-->
+
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -140,6 +146,18 @@
             <artifactId>velocity-tools</artifactId>
             <version>2.0</version>
         </dependency>
+        
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.8.10</version>
+		</dependency>
+
+
+
+
+        
     </dependencies>
     <build>
         <finalName>myManage</finalName>

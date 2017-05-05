@@ -27,10 +27,35 @@
         <property name="order" value="1" /> <!-- 多ViewResovler配置 -->
     </bean>
 
+
+    <!-- 数据源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://120.25.97.18:3307/manage?characterEncoding=UTF-8"/>
+        <property name="username" value="manage"/>
+        <property name="password" value="spdb1234"/>
+    </bean>
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+        	<list>
+        		<value>mapping/Admin.hbm.xml</value>
+        	</list>
+        </property>
+        <property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+    </bean>
+ <!--    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(public * com.mmg.service..*.*(..))" order="1" />
-	</aop:config>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="rollbackOnCommitFailure" value="true"/>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="*" rollback-for="Exception" />
@@ -43,24 +68,8 @@
 			<tx:method name="set*" read-only="true" propagation="SUPPORTS"/>
 		</tx:attributes>
 	</tx:advice>
-
-
-    <!-- 数据源-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://120.25.97.18:3307/manage?characterEncoding=UTF-8"/>
-        <property name="username" value="manage"/>
-        <property name="password" value="spdb1234"/>
-    </bean>
-   <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mappingDirectoryLocations">
-        	<list>
-        		<value>classpath:mapping</value>
-        	</list>
-        </property>
-    </bean>
-<!--     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean> -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(public * com.mmg.service..*.*(..))" order="1" />
+	</aop:config>
+	 -->
 </beans>
