@@ -4,8 +4,12 @@
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:mvc="http://www.springframework.org/schema/mvc"
         xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
@@ -23,7 +27,22 @@
         <property name="order" value="1" /> <!-- 多ViewResovler配置 -->
     </bean>
 
-
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(public * com.mmg.service..*.*(..))" order="1" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception" />
+			<tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="load*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="is*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="search*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="init*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="set*" read-only="true" propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
 
 
     <!-- 数据源-->
@@ -33,12 +52,15 @@
         <property name="username" value="manage"/>
         <property name="password" value="spdb1234"/>
     </bean>
-  <!--  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
-            <list>
-                <value>entity/Admin.hbm.xml</value>
-            </list>
+        <property name="mappingDirectoryLocations">
+        	<list>
+        		<value>classpath:mapping</value>
+        	</list>
         </property>
-    </bean>-->
+    </bean>
+<!--     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean> -->
 </beans>
