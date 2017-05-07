@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.mmg.model.Admin" table="ADMIN"   lazy="false">
+    <class name="com.mmg.entity.admin.Admin" table="ADMIN" lazy="false">
         <id name="id" type="java.lang.Integer">
             <column name="ADMINID" />
         </id>

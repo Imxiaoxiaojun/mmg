@@ -10,14 +10,14 @@
     padding: 0;
     z-index: 150001;
     padding: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0,0,0,0.8);
 }
 
 .piro_html .resize {
     cursor: move;
 }
 
-.piro_html table, .piro_html tbody, .piro_html tr, .piro_html th, .piro_html td, .piro_html img, .piro_html .h_c_c {
+.piro_html table,.piro_html tbody,.piro_html tr,.piro_html th,.piro_html td, .piro_html img, .piro_html .h_c_c {
     margin: 0;
     padding: 0;
     border: none;
@@ -119,7 +119,7 @@
     color: black;
     cursor: text;
     z-index: 150018;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0,0,0,0.8);
 }
 
 .caption p {

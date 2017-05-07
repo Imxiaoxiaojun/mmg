@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<title>用户登录</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="description" content="Admin Login">
+    <meta name="keywords" content="Dream Console">
+
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script> <!-- jQuery Library -->
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--  Form Related -->
+    <script src="js/icheck.js"></script> <!-- Custom Checkbox + Radio -->
+    <!-- All JS functions -->
+    <script src="js/functions.js"></script>
+</head>
+<body align="center" id="skin-blur-violate">
+<!-- Login -->
+<form action="admin/adminConsole.xhtml" method="post" class="box tile animated active" id="box-login">
+    <section id="login">
+        <header>
+            <h1>管理系统</h1>
+        </header>
+        <br/>
+        <div class="clearfix"></div>
+        <h2 class="m-t-0 m-b-15">Login</h2>
+        <input type="text" class="login-control m-b-10" placeholder="用户名" name="userName" value="admin"><br/>
+        <input type="password" class="login-control" placeholder="密码" name="passWord" value="111"><br/>
+        <div  class="verifyImg-div">
+            <input type="text" class="m-t-10  login-control " placeholder="验证码" name="captchaId">&nbsp;&nbsp;
+            <img src="${srcUrl}/getCaptchaId.xhtml" class="verifyImg" onclick="change()">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-sm m-r-5">登录</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <small>
+            <a class="box-switcher" data-switch="box-register" href="#">忘记账号？</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="box-switcher" data-switch="box-reset" href="#">忘记密码？</a>
+        </small>
+</form>
+</body>
+</html>

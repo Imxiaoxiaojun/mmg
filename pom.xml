@@ -70,7 +70,26 @@
 	    <artifactId>spring-orm</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
-        
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<!--        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>4.2.2.RELEASE</version>
+        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>4.2.2.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>4.2.2.RELEASE</version>
+        </dependency>
+
+
         <!--spring end-->
         <!--struts2-->
         <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core -->
@@ -87,13 +106,14 @@
         </dependency>-->
         <!--struts2 end-->
         <!--hibernate-->
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate3 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-hibernate3</artifactId>
-            <version>2.0.8</version>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.3.8.RELEASE</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
@@ -154,6 +174,12 @@
 		    <version>1.8.10</version>
 		</dependency>
 
+        <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
 
 

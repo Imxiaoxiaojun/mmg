@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+    <title>哈尔滨大剧院演出管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        body,html{height:100%;width:100%;overflow:hidden;}
+        .clear:after,.button:after,.ui_layout:after,.abeam:after,.list li:after,.tales60:after,.tales100:after,.selectOptions:after,.inner:after,.nav_tabs:after{content:'content';clear:both;display:block;visibility: hidden;height:0px; width:0px;font-size:0px;}
+        .clear,.button,.ui_layout,.abeam,.list li,.tales60,.tales100,.selectOptions,.inner{zoom:1}
+
+        /*切换城市*/
+        .ui_changeCity{display:block; position:absolute; left:auto;right:350px; top:0px; cursor:pointer; font-family:"微软雅黑","宋体"; }
+        .ui_cityChoose{display:block; *display:inline-block; color:#fff; font-size:14px; font-weight:normal; height:36px; line-height:36px; *line-height:38px; overflow:hidden; padding:0 15px 0 10px; background:url(${staticPath}css/global/ico_arrow.gif) no-repeat right 17px;}
+        .ui_cityChoice{background-position:right -15px;}
+
+        .ui_city_plugs{-webkit-box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1); -moz-box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1); box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1);}
+        .ui_city_plugs a.select{color:#c30;}
+        .ui_city_plugs a:hover{background-color:#ec6120; color:#fff;}
+        .ui_t_search{height:30px;width:230px; float:left; margin-top:10px;}
+        .ui_t_search .overTxtLabel{width:188px!important;}
+        .search_text{font-size:12px; height:18px; line-height:18px; color:#666; padding:5px 3px ;border:0; border-top-left-radius:3px; border-bottom-left-radius:3px; outline:none; float:left; width:194px;}
+        .search_button{width:27px;height:28px;float:left;display:inline-block;overflow:hidden; border-top-right-radius:3px;border-bottom-right-radius:3px;}
+        .search_button input{background-position:5px 6px; background-color:#fff; border:0px;outline:none;height:28px;width:27px;float:left;cursor:pointer;}
+        .ui_t_searchClicked .search_button input,.search_button input:hover{background-position:5px -30px; background-color:#e8e8e8;}
+
+        /*城市选择（新）*/
+        .ui_city_plugs{border:1px solid #ddd; z-index:50; top:0; position:absolute; border-top:0; width:450px; background:#fff; visibility:hidden;
+            -webkit-box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1); -moz-box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1); box-shadow:2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+        .ui_city_plugs .inner{padding:2px;}
+        .ui_city_plugs a{text-decoration:none!important;}
+        .ui_city_search{background:#fed; height:30px; line-height:30px; padding:15px 30px; margin:1px;}
+        .ui_city_search span,.ui_city_search input{float:left;}
+        .ui_city_search .search_text{border-radius:3px;}
+        .ui_city_cType{display:block; margin-bottom:-1px; *position:relative; *top:0px;}
+        .ui_city_cType a{display:inline-block; float:left; color:#333; width:80px; height:32px; line-height:32px; line-height:34px\9; overflow:hidden; text-align:center; margin:0 2px 0 0; cursor:pointer;}
+        .ui_city_cType a:hover{color:#f60; background:#eee;}
+        .ui_city_cType a.select{border:1px solid #cecece; color:#333!important; background:#fff; border-bottom:0; font-weight:bold;}
+        .ui_city_hotList,.ui_city_allList{border-top:1px solid #cecece;}
+        .ui_city_hotList ul li{float:left;}
+        .ui_city_hotList ul li a{display:inline-block; float:left; white-space:nowrap; padding:0 8px; margin:0 5px 2px 5px; height:28px; line-height:28px; line-height:30px\9; overflow:hidden; color:#999; text-align:left;}
+        .ui_city_hotList ul li a:hover,.ui_city_hotList ul li a.select,.citySearch ul li a:hover,.citySearch ul li a:hover em{color:#fff!important; background:#ec6120;}
+
+    </style>
+</head>
+<body>
+<!-- <div style="width: 100%;height:20px;position: absolute">
+	<div id="cityChoose" class="ui_changeCity" style="z-index: 100"><b class="ui_cityChoose " id= "cityInfo"></b></div>
+	<div class="ui_city_plugs" id="ui_city_plugs" style=""></div>
+	<div style="clear:both; height: 0px;line-height: 0px;"></div>
+</div> -->
+<div class="header">
+    <div>哈尔滨大剧院演出管理系统</div>
+    <div class="rootDesin">
+        你好，$!{user.username}！$!DateUtil.format($DateUtil.getCurDate(),'yyyy年MM月dd日 ') &nbsp;
+        $!DateUtil.getCnWeek($DateUtil.getCurDate())&nbsp;&nbsp;<a href="#" class="m5">帮助</a>|<a href="${basePath}cas/logout.xhtml" class="m5" target="_top">退出</a>
+    </div>
+</div>
+<div class="oaLayout clear" id="oaLayout">
+    <div class="oaMenu">
+        <div class="plugs_menu" id="menu">
+            #foreach($menu in $treeMap.keySet())
+                <h2>$menu.menutitle</h2>
+                <ul style="display:none;">#set($subMenuList=$treeMap.get($menu))
+                    #foreach($sub in $subMenuList)
+                        <li><a href="$sub.href" target="$sub.target" onclick="selStyle(this);">$sub.menutitle</a></li>
+                    #end
+                </ul>
+            #end
+        </div>
+    </div>
+    <div class="plugsLeft">
+        <div class="toggleBar">
+            <div class="curBar"></div>
+            <div class="plugsLeft">
+                <div class="exeTopbar" id="exebar">
+                    <span class="choice" style="padding:0 5px;" >当前位置</span>
+                </div>
+                <div id="container" style="height: 100%">
+                    <iframe id="mainFrame" name="mainFrame" frameborder="0" scrolling="auto" width="100%;" height="100%" ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var initLayoutHeight = function() {
+        H = function(n){
+            n = isNaN(n)?n<0?0:n:n;
+            return n;
+        };
+
+        if(document.id('oaLayout')){
+            document.id('oaLayout').setStyle('height',H(window.getSize().y - 40));
+            if(parent.document.id('menu'))document.id('menu').setStyle('height',H(window.getSize().y - 40));
+            parent.document.id('oaLayout').getElements('iframe').setStyle('height',H(window.getSize().y - 66));
+        }else{
+            parent.document.getElement('*[id=oaLayout]').setStyle('height',H(parent.window.getSize().y - 40));
+            if(parent.document.getElement('*[id=menu]'))parent.document.getElement('*[id=menu]').setStyle('height',H(parent.window.getSize().y - 40));
+            parent.document.getElement('*[id=oaLayout]').getElements('iframe').setStyle('height',H(parent.window.getSize().y - 66));
+        }
+    };
+
+    function selStyle(obj){
+        $$('.plugs_menu a.choice').removeClass('choice');
+        $(obj).addClass('choice');
+    }
+    window.addEvent('domready',function(){
+        initLayoutHeight();
+        document.id('menu').getElements('h2').each(function(item){
+            item.addEvents({
+                'mouseenter':function(){this.toggleClass('navHover')},
+                'mouseleave':function(){this.toggleClass('navHover')}
+            })
+            new Collapsable(item,item.getNext(),null,function(){
+                this.clicker.toggleClass('choice')
+            });
+        })
+        $$('.curBar').addEvents({
+            'mouseenter':function(){this.toggleClass('hover');},
+            'mouseleave':function(){this.toggleClass('hover');},
+            'click':function(){
+                document.id('menu').getParent().toggleClass('curMenu');
+                document.id('oaLayout').toggleClass('plugsLayout');
+                this.toggleClass('choice');
+            }
+        });
+        /*
+
+            loadHeadCityList();
+            var cityBox = $('ui_city_plugs');
+            $('cityChoose').hover(cityBox,null,function(){
+                $('autoCity').setStyle('display','none');
+                $('cityKey').value="";
+                cityBox.show();
+                cityBox.toPos('cityChoose','bottomLeft',0,0);
+                cityBox.setStyle('height','320px');
+            }); */
+    })
+    function navChoice(el){
+        $('exebar').getElements('span').removeClass('choice');
+        $('menu').getElements('a').removeClass('choice');
+        $('container').getElements('iframe').hide();
+        $('container').getFirst().show();
+        $(el).addClass('choice');
+        return;
+    }
+    window.addEvent('resize',function() {
+        initLayoutHeight();
+    });
+
+    function loadHeadCityList(){
+        GewaraUtil.sendLoad("ui_city_plugs", "${basePath}admin/ajax/common/adminCityList.xhtml",{}, function(result){
+        });
+    }
+    function changeCity(citycode){
+        document.location='${basePath}admin/changeCity.xhtml?citycode=' + citycode;
+    };
+</script>
+
+</body>
+</html>
