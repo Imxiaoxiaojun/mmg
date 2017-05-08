@@ -208,7 +208,7 @@ public class VerifyCodeUtil {
 
     }
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException{/*
         File dir = new File("F:/verifies");
         int w = 200, h = 80;
         for(int i = 0; i < 10; i++){
@@ -216,5 +216,5 @@ public class VerifyCodeUtil {
             File file = new File(dir, verifyCode + ".jpg");
             outputImage(w, h, file, verifyCode);
         }
-    }
+    */}
 }

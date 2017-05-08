@@ -17,6 +17,11 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/generics.css" rel="stylesheet">
 
+	<!-- common js-->
+	<script src="js/common/util.js"></script>
+	<!-- checklogin -->
+    <script src="js/admin/checkuser.js"></script>
+    
     <script src="js/jquery.min.js"></script> <!-- jQuery Library -->
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
@@ -35,19 +40,18 @@
         <br/>
         <div class="clearfix"></div>
         <h2 class="m-t-0 m-b-15">Login</h2>
-        <input type="text" class="login-control m-b-10" placeholder="用户名" name="userName" value="admin"><br/>
-        <input type="password" class="login-control" placeholder="密码" name="passWord" value="111"><br/>
+        <input type="text" class="login-control m-b-10" placeholder="用户名" id="userName" name="userName" value="admin"><br/>
+        <input type="password" class="login-control" placeholder="密码" id ="passWord" name="passWord" value="111"><br/>
         <div  class="verifyImg-div">
-            <input type="text" class="m-t-10  login-control " placeholder="验证码" name="captchaId">&nbsp;&nbsp;
+            <input type="text" class="m-t-10  login-control " placeholder="验证码" value="1111" id="captchaId" name="captchaId">&nbsp;&nbsp;
             <img src="${srcUrl}/getCaptchaId.xhtml" class="verifyImg" onclick="change()">
+            <br/>
+           <span id="EEE" style="align:left;">
         </div>
-        <br/>
-        <button type="submit" class="btn btn-sm m-r-5">登录</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <small>
-            <a class="box-switcher" data-switch="box-register" href="#">忘记账号？</a>&nbsp;&nbsp;&nbsp;&nbsp;
+       		<input type="button" onclick="login(this);" class="btn btn-sm"  value ="登录"/>
+       		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="box-switcher" data-switch="box-reset" href="#">忘记密码？</a>
-        </small>
+        </section>
 </form>
 </body>
 </html>
