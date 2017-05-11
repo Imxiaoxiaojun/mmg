@@ -1,6 +1,8 @@
 package com.mmg.controller;
 
 import com.mmg.common.VerifyCodeUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class CommonController {
+    private Log logger = LogFactory.getLog(this.getClass());
     @RequestMapping(value="/adminLogin.xhtml",method= RequestMethod.GET)
     public String gotoLogin(HttpServletRequest request, ModelMap model){
         String path = request.getContextPath();
         String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
         model.put("srcUrl",basePath);
         return "login.vm";
     }

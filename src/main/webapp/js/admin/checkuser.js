@@ -21,9 +21,8 @@ var login = function(val){
 	formDataUtil.put("passWord",password.value);
 	formDataUtil.put("captchaId",captchaid.value);
 	formDataUtil.put(1,captchaid.value);
-	ajaxpost("admin/adminConsole.xhtml",formDataUtil.getajaxdata(),function(data){
-		if(data){
-			console.log(data);
-		}
-	})
+	document.forms[0].action = "admin/adminConsole.xhtml";
+	document.forms[0].submit();
+	// $.post("admin/adminConsole.xhtml",formDataUtil.getajaxdata(),null);
+	// ajaxpost("admin/adminConsole.xhtml",formDataUtil.getajaxdata())
 }

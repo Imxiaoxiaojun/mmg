@@ -2308,3 +2308,25 @@ a.list-group-item.active > .badge,
 .logind{
 /* 	padding-left:16%; */
 }
+.iframe_top{
+width: 100%;
+height: 15%;
+    background-color: red;
+}
+.iframe_left{
+width: 15%;
+height: 70%;
+    background-color: blue;
+}
+.iframe_main{
+    width: 85%;
+    height: 70%;
+    padding-top:15%;
+    padding-right: 0px;;
+    background-color: yellow;
+}
+.iframe_buttom{
+    width: 100%;
+    height: 15%;
+    background-color:#c0a16b;
+}

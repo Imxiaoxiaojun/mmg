@@ -3,19 +3,15 @@ var getElementById = function(val){
 	return document.getElementById(val);
 }
 
-var ajaxpost = function(url,param,succallback,errcallback){
-	debugger;
-	$.ajax({  
-        type: "post",  
-        url: url,  
-        data: param || {},  
-        dataType: "json",  
-        success: succallback,  
-        error: function (messsage) {  
-           getElementById("EEE").innerHTML=messsage;
-        }  
-    });  
-} 
+var ajaxpost = function (url, param, succallback, errcallback) {
+    debugger;
+    $.ajax({
+        type: "post",
+        url: url,
+        data: param || {},
+        dataType: "html"
+    });
+}
 
 
 var ajaxget = function(url,param,succallback,errcallback){
