@@ -44,9 +44,6 @@ var FormDataUtil = function (){
 //		return this.array[key];
 	}
 	this.getajaxdata = function(){
-//		var ajaxdata = "";
-//		return this.obj;
-		
 		return this.param.substring(0,this.param.lastIndexOf('&'));
 	}
 };

@@ -15,15 +15,16 @@ var login = function(val){
 		getElementById("EEE").innerHTML="验证码错误";
 		return;
 	}
-//	getElementById("box-login").action= "admin/adminConsole.xhtml"
+	getElementById("box-login").action= "admin/adminConsole.xhtml"
 	var formDataUtil = new FormDataUtil();
 	formDataUtil.put("userName",username.value);
 	formDataUtil.put("passWord",password.value);
 	formDataUtil.put("captchaId",captchaid.value);
 	formDataUtil.put(1,captchaid.value);
-	ajaxpost("admin/adminConsole.xhtml",formDataUtil.getajaxdata(),function(data){
-		if(data){
-			console.log(data);
-		}
-	})
+	getElementById("box-login").submit();
+//	ajaxpost("admin/adminConsole.xhtml",formDataUtil.getajaxdata(),function(data){
+//		if(data){
+//			console.log(data);
+//		}
+//	})
 }

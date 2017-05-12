@@ -40,7 +40,7 @@
         <br/>
         <div class="clearfix"></div>
         <h2 class="m-t-0 m-b-15">Login</h2>
-        <input type="text" class="login-control m-b-10" placeholder="用户名" id="userName" name="userName" value="admin"><br/>
+        <input type="text" class="login-control m-b-10" placeholder="用户名" id="userName" name="userName" value="$!{j_username}"><br/>
         <input type="password" class="login-control" placeholder="密码" id ="passWord" name="passWord" value="111"><br/>
         <div  class="verifyImg-div">
             <input type="text" class="m-t-10  login-control " placeholder="验证码" value="1111" id="captchaId" name="captchaId">&nbsp;&nbsp;
