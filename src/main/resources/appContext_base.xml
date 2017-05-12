@@ -35,41 +35,8 @@
         <property name="viewNames" value="*.xhtml,*.html"/>
     </bean>
 
-    <!-- 数据源-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://120.25.97.18:3307/manage?characterEncoding=UTF-8"/>
-        <property name="username" value="manage"/>
-        <property name="password" value="spdb1234"/>
-    </bean>
-   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-       <property name="packagesToScan">
-        <list>
-            <value>com.mmg.entity</value>
-        </list>
-       </property>
-        <property name="hibernateProperties">
-           <props>
-               <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-               <prop key="hibernate.hbm2ddl.auto">update</prop>
-               <prop key="hibernate.show_sql">true</prop>
-               <prop key="hibernate.format_sql">true</prop>
-           </props>
-        </property>
-      <!-- <property name="mappingResources">
-        	<list>
-        		<value>mapping/Admin.hbm.xml</value>
-        	</list>
-        </property>-->
-    </bean>
-    <!-- 配置一个事务管理器 -->
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+    
 
-    <!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
     <mvc:interceptors>
         <!-- 多个拦截器，顺序执行 -->
         <mvc:interceptor>

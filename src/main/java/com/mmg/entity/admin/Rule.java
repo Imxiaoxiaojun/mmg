@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by yj on 2017/5/11.
  */
 @Entity
-@Proxy(lazy = false)
+//@Proxy(lazy = false)
 public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

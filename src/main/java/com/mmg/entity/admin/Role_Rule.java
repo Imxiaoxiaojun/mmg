@@ -8,9 +8,10 @@ import javax.persistence.*;
  * Created by yj on 2017/5/11.
  */
 @Entity
-@Proxy(lazy = false)
+//@Proxy(lazy = false)
 public class Role_Rule {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "roleId",foreignKey = @ForeignKey(name = "ROLE_ID_FK"))

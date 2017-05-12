@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Proxy(lazy = false)
+//@Proxy(lazy = false)
 public class Admin extends BaseObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,6 @@
 <ul>
 #foreach( $entry in $list )
-    <li>$entry</li>
+    <li>$entry.adminId</li>
+    <li>$entry.userName</li>
+    <li>$entry.PassWord</li>
 #end
