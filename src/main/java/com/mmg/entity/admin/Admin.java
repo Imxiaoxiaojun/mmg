@@ -1,5 +1,7 @@
 package com.mmg.entity.admin;
-
+/** 管理员
+ * Created by yj on 2017/5/11.
+ */
 import com.mmg.entity.BaseObject;
 import org.hibernate.annotations.Proxy;
 
@@ -11,20 +13,16 @@ import java.io.Serializable;
 public class Admin extends BaseObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 15, name = "ID", unique = true)
-    private Integer id;
-    @Column(length = 30, nullable = false, name = "USERNAME")
+    @Column(name = "adminId", length = 15, unique = true)
+    private Integer adminId;
+    @Column(name = "userName", length = 30, nullable = false)
     private String userName;
-    @Column(length = 30, nullable = false, name = "PASSWORD")
+    @Column(name = "passWord", length = 30, nullable = false)
     private String passWord;
+    @ManyToOne
+    @JoinColumn(name = "roleId",foreignKey = @ForeignKey(name = "ROLE_ID_FK"))
+    private Role role;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;
@@ -43,6 +41,30 @@ public class Admin extends BaseObject {
     }
 
     public Serializable realId() {
-        return id;
+        return adminId;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public Integer getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(Integer adminId) {
+        this.adminId = adminId;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

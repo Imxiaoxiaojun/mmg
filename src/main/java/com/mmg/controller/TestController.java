@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Controller
 public class TestController {
-    @RequestMapping("/admin/test.xhtml")
+    @RequestMapping("/test.xhtml")
     public String handleRequestInternal(HttpServletRequest req, ModelMap model, HttpServletResponse resp) throws Exception {
         System.out.println("------------ enter VelocityController");
 
