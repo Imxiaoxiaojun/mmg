@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
     <mvc:annotation-driven />
@@ -23,7 +23,7 @@
     <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="order" value="1"/>
         <property name="prefix" value=""/>
-        <property name="viewNames" value="*.vm"/>
+        <property name="viewNames" value="*.vm,*.html"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityView" />
     </bean>
@@ -32,13 +32,13 @@
         <property name="requestContextAttribute" value="rc" />
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/pages/" />
-        <property name="viewNames" value="*.xhtml"/>
+        <property name="viewNames" value="*.xhtml,*.html"/>
     </bean>
 
     <!-- 数据源-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://rm-uf662qs3mp886344ao.mysql.rds.aliyuncs.com:3306/manage?characterEncoding=UTF-8"/>
+        <property name="url" value="jdbc:mysql://120.25.97.18:3307/manage?characterEncoding=UTF-8"/>
         <property name="username" value="manage"/>
         <property name="password" value="spdb1234"/>
     </bean>
@@ -70,24 +70,31 @@
 
     <!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-<!--   <tx:annotation-driven transaction-manager="transactionManager"/>
-   <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-       <property name="rollbackOnCommitFailure" value="true"/>
-       <property name="sessionFactory" ref="sessionFactory" />
-   </bean>
-   <tx:advice id="txAdvice" transaction-manager="transactionManager">
-       <tx:attributes>
-           <tx:method name="*" rollback-for="Exception" />
-           <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="load*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="is*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="search*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="init*" read-only="true" propagation="SUPPORTS"/>
-           <tx:method name="set*" read-only="true" propagation="SUPPORTS"/>
-       </tx:attributes>
-   </tx:advice>
-   <aop:config>
-       <aop:advisor advice-ref="txAdvice" pointcut="execution(public * com.mmg.service..*.*(..))" order="1" />
-   </aop:config>-->
+    <mvc:interceptors>
+        <!-- 多个拦截器，顺序执行 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*"/>
+            <bean class="com.mmg.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--   <tx:annotation-driven transaction-manager="transactionManager"/>
+       <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+           <property name="rollbackOnCommitFailure" value="true"/>
+           <property name="sessionFactory" ref="sessionFactory" />
+       </bean>
+       <tx:advice id="txAdvice" transaction-manager="transactionManager">
+           <tx:attributes>
+               <tx:method name="*" rollback-for="Exception" />
+               <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="load*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="is*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="search*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="init*" read-only="true" propagation="SUPPORTS"/>
+               <tx:method name="set*" read-only="true" propagation="SUPPORTS"/>
+           </tx:attributes>
+       </tx:advice>
+       <aop:config>
+           <aop:advisor advice-ref="txAdvice" pointcut="execution(public * com.mmg.service..*.*(..))" order="1" />
+       </aop:config>-->
 </beans>
