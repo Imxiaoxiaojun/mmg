@@ -143,7 +143,7 @@ public class VerifyCodeUtil {
         int[] rgb = getRandomRgb();
         int color = 0;
         for (int c : rgb) {
-            color = color << 8;
+            color = color << 2;
             color = color | c;
         }
         return color;
