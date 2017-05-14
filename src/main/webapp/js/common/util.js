@@ -1,45 +1,42 @@
-var getElementById = function(val){
-	if(null == val || "" == val.trim())return null;
-	return document.getElementById(val);
+var getElementById = function (val) {
+    if (null == val || "" == val.trim())return null;
+    return document.getElementById(val);
 }
 
-var ajaxpost = function (url, param, succallback, errcallback) {
+var _ajax = function (url, type, param, succallback, failcallback) {
     debugger;
     $.ajax({
-        type: "post",
+        type: type,
         url: url,
+        async: true,
         data: param || {},
-        dataType: "html"
+        dataType: "text",
+        success: succallback,
+        error: failcallback || function (data) {
+            console.log(data);
+        }
     });
+
 }
-
-
-var ajaxget = function(url,param,succallback,errcallback){
-	$.ajax({  
-        type: "get",  
-        url: url,  
-        data: param || {},  
-        dataType: "json",  
-        success: succallback,  
-        error: function (messsage) {  
-           getElementById("EEE").innerHTML=messsage;
-        }  
-    });  
-} 
-
-var FormDataUtil = function (){
-	this.obj = {};
-	this.param = "";
-	this.put = function(key,val){
-		if(Object.prototype.toString.call(key)!="[object String]")return;
-		if(!key||""==key.trim())return;
-		this.obj[key] = val;
-		this.param += key + "=" + val + "&";
-	}
-	this.get = function(key){
+var strtojson = function (jsons) {
+    return eval('(' + jsons + ')');
+}
+var FormDataUtil = function () {
+    this.obj = {};
+    this.param = "";
+    this.put = function (key, val) {
+        if (Object.prototype.toString.call(key) != "[object String]")return;
+        if (!key || "" == key.trim())return;
+        this.obj[key] = val;
+        this.param += key + "=" + val + "&";
+    }
+    this.get = function (key) {
 //		return this.array[key];
-	}
-	this.getajaxdata = function(){
-		return this.param.substring(0,this.param.lastIndexOf('&'));
-	}
+    }
+    this.getajaxdata = function () {
+        return this.param.substring(0, this.param.lastIndexOf('&'));
+    }
 };
+
+var changeCode = function () {
+}

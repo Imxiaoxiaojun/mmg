@@ -1,9 +1,11 @@
 package com.mmg.entity;
 
+import com.mmg.common.Cache;
+
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 @MappedSuperclass
-public abstract class BaseObject implements Serializable {
+public abstract class BaseObject extends Cache implements Serializable {
     private static final long serialVersionUID = 4567041038888876723L;
 
     public abstract Serializable realId();

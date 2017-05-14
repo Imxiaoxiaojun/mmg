@@ -1,9 +1,7 @@
 package com.mmg.dao;
 
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.mmg.entity.BaseObject;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mmg.entity.BaseObject;
+import java.io.Serializable;
+import java.util.List;
 @Repository("baseDao")
 public class BaseDaoImpl implements BaseDao{
 	

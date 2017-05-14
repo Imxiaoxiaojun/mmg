@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>菜单</title>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
+    <script language="JavaScript" src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            //导航切换
+            $(".menuson li").click(function () {
+                $(".menuson li.active").removeClass("active")
+                $(this).addClass("active");
+            });
+
+            $('.title').click(function () {
+                var $ul =
+                $(this).next('ul');
+                $('dd').find('ul').slideUp();
+                if ($ul.is(':visible')) {
+                    $(this).next('ul').slideUp();
+                } else {
+                    $(this).next('ul').slideDown();
+                }
+            });
+        })
+    </script>
+</head>
+
+<body style="background:#f0f9fd;">
+<div class="lefttop"><span></span>后台管理</div>
+
+<dl class="leftmenu">
+    #if($menuList1)
+        #foreach($parent in $menuList1)
+            #if($parent.level == 1)
+                <dd>
+                    <div class="title">
+                        <span><img src="$parent.picSrc"/></span>$!{parent.ruleName}
+                    </div>
+                    <ul class="menuson">
+                        #if($menuList2)
+                            #foreach($sub in $menuList2)
+                                #if($sub.parentId == $parent.ruleId)
+                                    <li class="active"><cite></cite><a href="$sub.targetUrl" target="">$sub.ruleName</a><i></i>
+                                    </li>
+                                #end
+                            #end
+                        #end
+                    </ul>
+                </dd>
+            #end
+        #end
+    #end
+</dl>
+</body>
+</html>
+
