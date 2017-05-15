@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bc3725a-f9a5-43cd-a869-20d0d04d31e5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/myManage_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/myManage_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myManage.iml" afterPath="$PROJECT_DIR$/myManage.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/controller/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/controller/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/dao/BaseDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/dao/BaseDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/entity/admin/User_Role.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/entity/admin/User_Role.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/service/AdminService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/service/AdminService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/service/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/service/BaseService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/BaseServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/BaseServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/classes/log4j.xml" />
     </list>
     <ignored path="myManage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,8 +48,8 @@
       <file leaf-file-name="AdminService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/service/AdminService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+            <state relative-caret-position="198">
+              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -70,14 +58,14 @@
       <file leaf-file-name="AdminServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+            <state relative-caret-position="242">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1518#1529#0" expanded="true" />
-                <element signature="e#2014#2020#0" expanded="true" />
-                <element signature="e#3190#3191#0" expanded="true" />
-                <element signature="e#3217#3218#0" expanded="true" />
+                <element signature="e#2005#2006#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+                <element signature="e#2097#2098#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +84,8 @@
       <file leaf-file-name="AdminServiceImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="30" column="79" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+            <state relative-caret-position="262">
+              <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,13 +96,13 @@
       <file leaf-file-name="CommonUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+            <state relative-caret-position="98">
+              <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
               <folding>
-                <element signature="e#3847#3860#0" expanded="true" />
-                <element signature="e#4414#4421#0" expanded="true" />
-                <element signature="e#5810#5817#0" expanded="true" />
-                <element signature="e#6156#6163#0" expanded="true" />
+                <element signature="e#3958#3971#0" expanded="true" />
+                <element signature="e#4525#4532#0" expanded="true" />
+                <element signature="e#5921#5928#0" expanded="true" />
+                <element signature="e#6267#6274#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,8 +240,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/service/BaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/controller/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/dao/BaseDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/service/AdminService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java" />
@@ -349,6 +337,26 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1126,8 +1134,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.AdminServiceImplTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CommonUtil" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.AdminServiceImplTest.assertTru" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AdminServiceImplTest.assertTru" />
+        <item index="2" class="java.lang.String" itemvalue="Application.CommonUtil" />
         <item index="3" class="java.lang.String" itemvalue="Application.Test" />
         <item index="4" class="java.lang.String" itemvalue="Application.VerifyCodeUtil" />
       </list>
@@ -1160,7 +1168,7 @@
       <workItem from="1494605789487" duration="51818000" />
       <workItem from="1494695277608" duration="1537000" />
       <workItem from="1494726779707" duration="33945000" />
-      <workItem from="1494853857081" duration="14833000" />
+      <workItem from="1494853857081" duration="17837000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1493918042283</created>
@@ -1225,43 +1233,50 @@
       <option name="project" value="LOCAL" />
       <updated>1494777014446</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="zyj">
+      <created>1494869234399</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494869234399</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AdminServiceImplTest - 2017.05.16 at 00h 47m 53s.xml">
+    <history-entry file="AdminServiceImplTest - 2017.05.16 at 02h 04m 51s.xml">
       <configuration name="AdminServiceImplTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest - 2017.05.16 at 01h 21m 30s.xml">
+    <history-entry file="AdminServiceImplTest - 2017.05.16 at 02h 17m 25s.xml">
       <configuration name="AdminServiceImplTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest - 2017.05.16 at 01h 25m 19s.xml">
-      <configuration name="AdminServiceImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AdminServiceImplTest - 2017.05.16 at 01h 26m 14s.xml">
-      <configuration name="AdminServiceImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 00h 36m 21s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 44m 40s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 00h 43m 40s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 53m 19s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 00h 43m 54s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 53m 32s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 00h 44m 56s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 58m 01s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 00h 47m 03s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 59m 23s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 01h 16m 20s.xml">
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 02h 02m 58s.xml">
+      <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 02h 13m 10s.xml">
+      <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AdminServiceImplTest_assertTru - 2017.05.16 at 02h 16m 42s.xml">
       <configuration name="AdminServiceImplTest.assertTru" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220403000" />
+    <option name="totallyTimeSpent" value="223407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1277,18 +1292,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3991323" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25053304" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25053304" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1374,15 +1389,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java</url>
-          <line>30</line>
+          <line>31</line>
           <properties />
-          <option name="timeStamp" value="139" />
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java</url>
-          <line>40</line>
+          <line>52</line>
           <properties />
-          <option name="timeStamp" value="140" />
+          <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>jar://F:/soft/MavenWareHouse/org/springframework/spring-webmvc/4.3.8.RELEASE/spring-webmvc-4.3.8.RELEASE.jar!/org/springframework/web/servlet/i18n/LocaleChangeInterceptor.class</url>
@@ -1394,7 +1409,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="141" />
+      <option name="time" value="147" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1402,6 +1417,9 @@
         <watch expression="request.getSession().getAttribute(&quot;verCodeCheck&quot;)" />
         <watch expression="CacheManager" />
         <watch expression="admin" />
+      </configuration>
+      <configuration name="JUnit">
+        <watch expression="rule" />
       </configuration>
       <configuration name="Application">
         <watch expression="clazz.getField(field)" />
@@ -1707,14 +1725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/entity/admin/QuickMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/dao/BaseDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1749,45 +1759,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/entity/admin/QuickMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/service/AdminService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        <state relative-caret-position="198">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/util/CommonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+        <state relative-caret-position="98">
+          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
           <folding>
-            <element signature="e#3847#3860#0" expanded="true" />
-            <element signature="e#4414#4421#0" expanded="true" />
-            <element signature="e#5810#5817#0" expanded="true" />
-            <element signature="e#6156#6163#0" expanded="true" />
+            <element signature="e#3958#3971#0" expanded="true" />
+            <element signature="e#4525#4532#0" expanded="true" />
+            <element signature="e#5921#5928#0" expanded="true" />
+            <element signature="e#6267#6274#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mmg/service/impl/AdminServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        <state relative-caret-position="242">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1518#1529#0" expanded="true" />
-            <element signature="e#2014#2020#0" expanded="true" />
-            <element signature="e#3190#3191#0" expanded="true" />
-            <element signature="e#3217#3218#0" expanded="true" />
+            <element signature="e#2005#2006#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/mmg/service/impl/AdminServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="30" column="79" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+        <state relative-caret-position="262">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

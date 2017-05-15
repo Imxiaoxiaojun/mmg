@@ -1,10 +1,7 @@
 package com.mmg.service.impl;
 
-import com.mmg.entity.admin.Admin;
-import com.mmg.entity.admin.Role_Rule;
-import com.mmg.entity.admin.User_Role;
+import com.mmg.entity.admin.Rule;
 import com.mmg.service.AdminService;
-import com.mmg.util.CommonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -25,15 +22,18 @@ public class AdminServiceImplTest {
 
 	@Test
 	public void assertTru() {
-		Admin admin = adminService.getAdminInfo("admin");
-		List<User_Role> user_roles = adminService.getUser2RoleList(admin.getId());
-		List roleIdlist = CommonUtil.getFieldList(user_roles,User_Role.class,"role","id");
-		List<Role_Rule> role_rules = adminService.getRole2RuleList(roleIdlist);
+//		Admin admin = adminService.getAdminInfo("admin");
+//		List<User_Role> user_roles = adminService.getUser2RoleList(admin.getId());
+//		List<Integer> roleIdlist = CommonUtil.getFieldList(user_roles,User_Role.class,"role","id");
+//		List<Role_Rule> role_rules = adminService.getRole2RuleList(roleIdlist);
+//		Set ruleList = new HashSet(CommonUtil.getFieldList(role_rules,Role_Rule.class,"rule",""));
+		adminService.getAllRuleList();
+		List<Rule> ruleList = adminService.getAllRuleList();
 		log.fatal("-----------------------------------------------------tset-------------------------------------------------------");
 //		Assert.assertSame(adminService.checkLogin("admin", "123123"),true);
 //		Assert.assertSame(adminService.getAdminInfo("admin").getPassword(),"123123");
 //		Assert.assertSame(adminService.getAdminInfo("admin").getPassword(),"123123");
-		for (Role_Rule rule: role_rules) {
+		for (Object rule: ruleList) {
 			log.fatal(rule);
 		}
 //		Assert.assertSame(adminService.getUser2RoleList("1"),true);

@@ -9,10 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by yj on 2017/5/13.
@@ -44,7 +41,7 @@ public class CommonUtil {
      *                for example      public class Person{private Integer person_id,private String person_name,private Woman woman}
      *                                 public class Woman{private Integer woman_id,private String woman_name}
      *                "woman" or ""
-     * @param fieldName 要查询的字段名称，如果uniqueClassName不为空，则送uniqueClassName中的字段名 "person_id" or "woman_id"
+     * @param fieldName 要查询的字段名称，如果uniqueClassName不为空，则送uniqueClassName中的字段名 "person_id" or "woman_id" ,如果为空，将直接返回引用的对象
      *
      * @return
      */
@@ -57,10 +54,14 @@ public class CommonUtil {
                 for(Object object : list){
                     Object uniqueObj = uniqueClassField.get(object);
                     Class uniqueClass = uniqueObj.getClass();
-                    Field uniField = uniqueClass.getDeclaredField(fieldName);
-                    uniField.setAccessible(true);
-                    Object uniFieldVal = uniField.get(uniqueObj);
-                    filedList.add(uniFieldVal);
+                    if(!StringUtils.isBlank(fieldName)){
+                        Field uniField = uniqueClass.getDeclaredField(fieldName);
+                        uniField.setAccessible(true);
+                        Object uniFieldVal = uniField.get(uniqueObj);
+                        filedList.add(uniFieldVal);
+                    }else {
+                        filedList.add(uniqueObj);
+                    }
                 }
             }else{
                 Field field = clazz.getDeclaredField(fieldName);

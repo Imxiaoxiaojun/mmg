@@ -49,29 +49,8 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
     }
 
     @Cacheable(value = "adminCache")
-    public List<Rule> getRuleList(Collection ruleIdList){
-        List<Rule> ruleList = new ArrayList<Rule>();
-        /*List<String> cacheMenuKeyList = CacheManager.getCacheListkey("menu");
-        if(null == cacheMenuKeyList || cacheMenuKeyList.size() <= 0){
-            Admin admin = (Admin) CacheManager.getCacheInfo("adminInfo");
-            Integer roleId = admin.getRole().getRoleId();
-            DetachedCriteria role_rule = DetachedCriteria.forClass(Role_Rule.class);
-            role_rule.add(Restrictions.ge("role.roleId",roleId));
-            List<Role_Rule> roleRuleList = (List<Role_Rule>)baseDao.findByCriteria(role_rule);
-            if(roleRuleList.size() <=0 )return null;
-
-            for(Iterator<Role_Rule> it = roleRuleList.iterator();it.hasNext();){
-                Integer ruleId = it.next().getRule().getRuleId();
-                Rule rule = baseDao.getObject(Rule.class,ruleId);
-                if(null != rule){
-                    ruleList.add(rule);
-                }
-            }
-        }
-        for(Iterator<String> it = cacheMenuKeyList.iterator();it.hasNext();){
-            ruleList.add((Rule) CacheManager.getCacheInfo(it.next()));
-        }*/
-        return ruleList;
+    public List<Rule> getAllRuleList(){
+        return super.getAllObjects(Rule.class);
     }
 
     public List<QuickMenu> getQuickMenuList(Integer admin_Id) {

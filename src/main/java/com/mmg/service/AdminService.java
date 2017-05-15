@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface AdminService extends BaseService{
     boolean checkLogin(String userName,String passwd);
-    List<Rule> getRuleList(Collection ruleIdList);
+    List<Rule> getAllRuleList();
     List<QuickMenu> getQuickMenuList(Integer admin_Id);
     Admin getAdminInfo(String userName);
     void loadUserToCache(String userName);
