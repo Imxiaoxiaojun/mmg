@@ -7,66 +7,74 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * 角色
- * Created by yj on 2017/5/11.
+ * 角色 Created by yj on 2017/5/11.
  */
 @Entity
-//@Proxy(lazy = false)
+// @Proxy(lazy = false)
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "roleId" }) })
 public class Role extends BaseObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roleId", length = 15, unique = true)
-    private Integer roleId;
-    @Column(name = "roleName", length = 15, unique = true, nullable = false)
-    private String roleName;
-    @Column(name = "createTime", length = 30, nullable = false)
-    private Timestamp createTime;
-    @Column(name = "lastUpdateTime", length = 30, nullable = false)
-    private Timestamp lastUpdateTime;
+	private static final long serialVersionUID = -763787974679876798L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", length = 15, unique = true)
+	private Integer id;
+	@Column(name = "roleId", length = 30, unique = true, nullable = false)
+	private String roleId;
+	@Column(name = "roleName", length = 50)
+	private String roleName;
+	@Column(name = "createTime", length = 30, nullable = false)
+	private Timestamp createTime;
+	@Column(name = "lastUpdateTime", length = 30, nullable = false)
+	private Timestamp lastUpdateTime;
 
-    public Integer getRoleId() {
-        return roleId;
-    }
+	public String getRoleId() {
+		return roleId;
+	}
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-    public String getRoleName() {
-        return roleName;
-    }
+	public String getRoleName() {
+		return roleName;
+	}
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
 
-    public Serializable realId() {
-        return roleId;
-    }
+	public Serializable realId() {
+		return id;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 
-    public Timestamp getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+	public Timestamp getLastUpdateTime() {
+		return lastUpdateTime;
+	}
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
+	public void setLastUpdateTime(Timestamp lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", roleName='" + roleName + '\'' +
-                ", createTime=" + createTime +
-                ", lastUpdateTime=" + lastUpdateTime +
-                '}';
-    }
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", roleId=" + roleId + ", roleName=" + roleName + ", createTime=" + createTime
+				+ ", lastUpdateTime=" + lastUpdateTime + "]";
+	}
+
 }

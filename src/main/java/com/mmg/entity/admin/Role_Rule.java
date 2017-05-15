@@ -10,76 +10,73 @@ import java.sql.Timestamp;
  * Created by yj on 2017/5/11.
  */
 @Entity
-//@Proxy(lazy = false)
+// @Proxy(lazy = false)
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "roleId", "ruleId" }) })
 public class Role_Rule extends BaseObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "roleId", foreignKey = @ForeignKey(name = "ROLE_ID_FK"))
-    private Role role;
+	private static final long serialVersionUID = -4567041876497276723L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", length = 15, nullable = false, unique = true)
+	private Integer id;
+	@ManyToOne()
+	@JoinColumn(name = "roleId")
+	private Role role;
+	@ManyToOne()
+	@JoinColumn(name = "ruleId")
+	private Rule rule;
+	@Column(name = "lastUpdateTime", length = 30, nullable = false)
+	private Timestamp lastUpdateTime;
+	@Column(name = "createTime", length = 30, nullable = false)
+	private Timestamp createTime;
 
-    @ManyToOne
-    @JoinColumn(name = "ruleId", foreignKey = @ForeignKey(name = "RULE_ID_FK"))
-    private Rule rule;
+	public Integer getId() {
+		return id;
+	}
 
-    @Column(name = "lastUpdateTime", length = 30, nullable = false)
-    private Timestamp lastUpdateTime;
-    @Column(name = "createTime", length = 30, nullable = false)
-    private Timestamp createTime;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Serializable realId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Timestamp getLastUpdateTime() {
+		return lastUpdateTime;
+	}
 
-    public Role getRole() {
-        return role;
-    }
+	public void setLastUpdateTime(Timestamp lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
 
-    public Rule getRule() {
-        return rule;
-    }
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setRule(Rule rule) {
-        this.rule = rule;
-    }
+	public Role getRole() {
+		return role;
+	}
 
-    public Serializable realId() {
-        return id;
-    }
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
-    public Timestamp getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+	public Rule getRule() {
+		return rule;
+	}
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
+	public void setRule(Rule rule) {
+		this.rule = rule;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	@Override
+	public String toString() {
+		return "Role_Rule [id=" + id + ", role=" + role + ", rule=" + rule + ", lastUpdateTime=" + lastUpdateTime
+				+ ", createTime=" + createTime + "]";
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Role_Rule{" +
-                "id=" + id +
-                ", role=" + role +
-                ", rule=" + rule +
-                ", lastUpdateTime=" + lastUpdateTime +
-                ", createTime=" + createTime +
-                '}';
-    }
 }

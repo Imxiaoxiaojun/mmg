@@ -4,13 +4,16 @@ import com.mmg.common.CacheManager;
 import com.mmg.dao.BaseDao;
 import com.mmg.entity.admin.Admin;
 import com.mmg.entity.admin.QuickMenu;
+import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Role_Rule;
 import com.mmg.entity.admin.Rule;
+import com.mmg.entity.admin.User_Role;
 import com.mmg.service.AdminService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,26 +27,27 @@ import java.util.List;
 @Transactional
 @Service("adminService")
 public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
-    @Autowired@Qualifier("baseDao")
-    private BaseDao baseDao;
-
+    
+    @Cacheable(value = "adminCache")
     public Admin getAdminInfo(String userName) {
-        Admin adminInfo = (Admin) CacheManager.getCacheInfo("adminInfo");
-        if(null != adminInfo) {
-            return adminInfo;
-        }else {
             DetachedCriteria criteria = DetachedCriteria.forClass(Admin.class);
-            criteria.add(Restrictions.eq("userName", userName));
-            List<Admin> adminList = (List<Admin>)baseDao.findByCriteria(criteria);
-            return adminList.get(0);
-        }
+            criteria.add(Restrictions.eq("adminId", userName));
+            return (Admin) baseDao.findByCriteria(criteria).get(0);
     }
 
     public List<QuickMenu> getQuickMenuList(Admin admin) {
         return null;
     }
+    
+    @Cacheable(value = "adminCache")
+    public List<User_Role> getUser2RoleList(String admin_Id){
+    	DetachedCriteria criteria = DetachedCriteria.forClass(User_Role.class);
+    	criteria.add(Restrictions.eq("adminId",admin_Id));
+    	return baseDao.findByCriteria(criteria);
+    }
+    
     public void loadUserToCache(String userName) {
-
+/*
         DetachedCriteria criteria = DetachedCriteria.forClass(Admin.class);
         criteria.add(Restrictions.eq("userName", userName));
         List<Admin> adminList = (List<Admin>)baseDao.findByCriteria(criteria);
@@ -74,20 +78,18 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
             if(null != rule){
                 CacheManager.putCache("quickMenu"+rule.getRuleId(),rule);//缓存用户快捷菜单的权限
             }
-        }
+        }*/
     }
-
+    
     public boolean checkLogin(String userName, String passwd) {
-        DetachedCriteria criteria = DetachedCriteria.forClass(Admin.class);
-        criteria.add(Restrictions.eq("userName", userName));
-        criteria.add(Restrictions.eq("passWord", passwd));
-        List<Admin> adminList = (List<Admin>)baseDao.findByCriteria(criteria);
-        return adminList.size() > 0 ? true : false;
+    	String hql = "from Admin where adminId = ? and passWord = ?";
+    	return baseDao.getObjectCountByHql(hql,userName,passwd) >0 ? true : false;
     }
+    
+    @Cacheable(value = "adminCache")
     public List<Rule> getMenuList(String userName){
         List<Rule> ruleList = new ArrayList<Rule>();
-
-        List<String> cacheMenuKeyList = CacheManager.getCacheListkey("menu");
+        /*List<String> cacheMenuKeyList = CacheManager.getCacheListkey("menu");
         if(null == cacheMenuKeyList || cacheMenuKeyList.size() <= 0){
             Admin admin = (Admin) CacheManager.getCacheInfo("adminInfo");
             Integer roleId = admin.getRole().getRoleId();
@@ -106,8 +108,7 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
         }
         for(Iterator<String> it = cacheMenuKeyList.iterator();it.hasNext();){
             ruleList.add((Rule) CacheManager.getCacheInfo(it.next()));
-        }
+        }*/
         return ruleList;
-
     }
 }

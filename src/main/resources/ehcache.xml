@@ -18,8 +18,8 @@
      共有三种策略,分别为LRU(最近最少使用)、LFU(最常用的)、FIFO(先进先出)默认使用"最近使用"策略
   -->
 
-    <defaultCache maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120" diskSpoolBufferSizeMB="30" maxEntriesLocalDisk="10000000" diskExpiryThreadIntervalSeconds="120" overflowToDisk="true" memoryStoreEvictionPolicy="LRU"/>
+    <defaultCache maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120" diskSpoolBufferSizeMB="30" maxEntriesLocalDisk="10000000" diskExpiryThreadIntervalSeconds="120" overflowToDisk="false" memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="adminCache" maxEntriesLocalHeap="10000" maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20" timeToIdleSeconds="300" timeToLiveSeconds="60" overflowToDisk="true" memoryStoreEvictionPolicy="LFU"/>
+    <cache name="adminCache" maxEntriesLocalHeap="10000" maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20" timeToIdleSeconds="300" timeToLiveSeconds="60" overflowToDisk="false" memoryStoreEvictionPolicy="LFU"/>
 
 </ehcache>

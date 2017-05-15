@@ -11,117 +11,120 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-//@Proxy(lazy = false)
-public class Admin extends BaseObject{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "adminId", length = 15, unique = true)
-    private Integer adminId;
-    @Column(name = "userName", length = 30,unique = true, nullable = false)
-    private String userName;
-    @Column(name = "passWord", length = 30, nullable = false)
-    private String passWord;
-    @ManyToOne
-    @JoinColumn(name = "roleId", foreignKey = @ForeignKey(name = "ROLE_ID_FK"))
-    private Role role;
-    @Column(name = "lastLoginTime", length = 30, nullable = false)
-    private Timestamp lastLoginTime;
-    @Column(name = "lastLoginIp", length = 30, nullable = false)
-    private String lastLoginIp;
-    @Column(name = "createTime", length = 30, nullable = false)
-    private Timestamp createTime;
-    @Column(name = "lastUpdateTime", length = 30, nullable = false)
-    private Timestamp lastUpdateTime;
+// @Proxy(lazy = false)
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId" }) })
+public class Admin extends BaseObject {
+	private static final long serialVersionUID = -4567041033458776723L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", length = 15, unique = true)
+	private Integer id;
+	@Column(name = "adminId", length = 30, unique = true, nullable = false)
+	private String adminId;
+	@Column(name = "adminName", length = 50)
+	private String adminName;
+	@Column(name = "passWord", length = 50, nullable = false)
+	private String passWord;
+	@Column(name = "roleId", length = 500, nullable = false)
+	private String roleId;
+	@Column(name = "lastLoginTime", length = 30, nullable = false)
+	private Timestamp lastLoginTime;
+	@Column(name = "lastLoginIp", length = 30, nullable = false)
+	private String lastLoginIp;
+	@Column(name = "createTime", length = 30, nullable = false)
+	private Timestamp createTime;
+	@Column(name = "lastUpdateTime", length = 30, nullable = false)
+	private Timestamp lastUpdateTime;
 
+	public String getPassword() {
+		return passWord;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public void setPassword(String password) {
+		this.passWord = password;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public Serializable realId() {
+		return id;
+	}
 
-    public String getPassword() {
-        return passWord;
-    }
+	public String getPassWord() {
+		return passWord;
+	}
 
-    public void setPassword(String password) {
-        this.passWord = password;
-    }
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
 
-    public Serializable realId() {
-        return adminId;
-    }
+	public String getLastLoginIp() {
+		return lastLoginIp;
+	}
 
-    public String getPassWord() {
-        return passWord;
-    }
+	public void setLastLoginIp(String lastLoginIp) {
+		this.lastLoginIp = lastLoginIp;
+	}
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
 
-    public Integer getAdminId() {
-        return adminId;
-    }
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
-    }
+	public Timestamp getLastUpdateTime() {
+		return lastUpdateTime;
+	}
 
-    public Role getRole() {
-        return role;
-    }
+	public void setLastUpdateTime(Timestamp lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+	public Timestamp getLastLoginTime() {
+		return lastLoginTime;
+	}
 
+	public void setLastLoginTime(Timestamp lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
 
-    public String getLastLoginIp() {
-        return lastLoginIp;
-    }
+	public String getRoleId() {
+		return roleId;
+	}
 
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Timestamp getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+	public String getAdminId() {
+		return adminId;
+	}
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
+	}
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "adminId=" + adminId +
-                ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", role=" + role +
-                ", lastLoginTime=" + lastLoginTime +
-                ", lastLoginIp='" + lastLoginIp + '\'' +
-                ", createTime=" + createTime +
-                ", lastUpdateTime=" + lastUpdateTime +
-                '}';
-    }
+	public String getAdminName() {
+		return adminName;
+	}
 
-    public Timestamp getLastLoginTime() {
-        return lastLoginTime;
-    }
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
 
-    public void setLastLoginTime(Timestamp lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", adminId=" + adminId + ", adminName=" + adminName + ", passWord=" + passWord
+				+ ", roleId=" + roleId + ", lastLoginTime=" + lastLoginTime + ", lastLoginIp=" + lastLoginIp
+				+ ", createTime=" + createTime + ", lastUpdateTime=" + lastUpdateTime + "]";
+	}
+
 }

@@ -10,75 +10,73 @@ import java.sql.Timestamp;
  * Created by yj on 2017/5/14.
  */
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId", "ruleId" }) })
 public class QuickMenu extends BaseObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "quickMenuId", length = 15, unique = true)
-    private Integer quickMenuId;
-    @ManyToOne
-    @JoinColumn(name = "adminId", foreignKey = @ForeignKey(name = "ADMIN_ID_FK"))
-    private Admin admin;
-    @ManyToOne
-    @JoinColumn(name = "ruleId", foreignKey = @ForeignKey(name = "RULE_ID_FK"))
-    private Rule rule;
-    @Column(name = "createTime", length = 30)
-    private Timestamp createTime;
-    @Column(name = "lastUpdateTime", length = 30)
-    private Timestamp lastUpdateTime;
+	private static final long serialVersionUID = -1467987974346546L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", length = 15, unique = true)
+	private Integer id;
+	@ManyToOne()
+	@JoinColumn(name = "adminId")
+	private Admin admin;
+	@ManyToOne()
+	@JoinColumn(name = "ruleId")
+	private Rule rule;
+	@Column(name = "createTime", length = 30)
+	private Timestamp createTime;
+	@Column(name = "lastUpdateTime", length = 30)
+	private Timestamp lastUpdateTime;
 
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
 
-    public Serializable realId() {
-        return quickMenuId;
-    }
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 
-    public Integer getQuickMenuId() {
-        return quickMenuId;
-    }
+	public Timestamp getLastUpdateTime() {
+		return lastUpdateTime;
+	}
 
-    public void setQuickMenuId(Integer quickMenuId) {
-        this.quickMenuId = quickMenuId;
-    }
+	public void setLastUpdateTime(Timestamp lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
 
-    public Admin getAdmin() {
-        return admin;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Rule getRule() {
-        return rule;
-    }
+	public Rule getRule() {
+		return rule;
+	}
 
-    public void setRule(Rule rule) {
-        this.rule = rule;
-    }
+	public void setRule(Rule rule) {
+		this.rule = rule;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	@Override
+	public String toString() {
+		return "QuickMenu [id=" + id + ", admin=" + admin + ", rule=" + rule + ", createTime=" + createTime
+				+ ", lastUpdateTime=" + lastUpdateTime + "]";
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	@Override
+	public Serializable realId() {
+		return id;
+	}
 
-    public Timestamp getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+	public Admin getAdmin() {
+		return admin;
+	}
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
-    @Override
-    public String toString() {
-        return "QuickMenu{" +
-                "quickMenuId=" + quickMenuId +
-                ", admin=" + admin +
-                ", rule=" + rule +
-                ", createTime=" + createTime +
-                ", lastUpdateTime=" + lastUpdateTime +
-                '}';
-    }
 }

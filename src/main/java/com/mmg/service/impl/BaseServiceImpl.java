@@ -17,10 +17,8 @@ import com.mmg.service.BaseService;
 @Service("baseDaoService")
 public class BaseServiceImpl implements BaseService{
 	@Autowired@Qualifier("baseDao")
-	private BaseDao baseDao;
+	protected BaseDao baseDao;
 
-	@Autowired@Qualifier("hibernateTemplate")
-	private HibernateTemplate hibernateTemplate;
 	
 	public <T extends BaseObject> List<T> getAllObjects(Class<T> clazz) {
 		return baseDao.getAllObjects(clazz);

@@ -64,5 +64,7 @@ public class BaseDaoImpl implements BaseDao{
 		return hibernateTemplate.findByCriteria(criteria, from, maxnum);
 	}
 
-	
+	public Integer getObjectCountByHql(String hql,Object... values){
+		return (Integer)hibernateTemplate.find(hql, values).size();
+	}
 }

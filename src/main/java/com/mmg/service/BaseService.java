@@ -14,7 +14,7 @@ public interface BaseService {
 	<T extends BaseObject> T updateObject(T entity);
 	<T extends BaseObject> T addObject(T entity);
 	<T extends BaseObject> int getObjectCount(Class<T> clazz);
-	List<?> findByCriteria(DetachedCriteria criteria);
-	List<?> findByCriteria(DetachedCriteria criteria, int from, int maxnum);
-	List<?> findByHql(String hql, Object... values);
+	<T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria);
+	<T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria, int from, int maxnum);
+	<T extends BaseObject> List<T> findByHql(String hql, Object... values);
 }
