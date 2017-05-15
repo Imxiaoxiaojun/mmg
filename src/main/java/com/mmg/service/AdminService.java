@@ -1,10 +1,8 @@
 package com.mmg.service;
 
-import com.mmg.entity.admin.Admin;
-import com.mmg.entity.admin.QuickMenu;
-import com.mmg.entity.admin.Rule;
-import com.mmg.entity.admin.User_Role;
+import com.mmg.entity.admin.*;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,9 +10,10 @@ import java.util.List;
  */
 public interface AdminService extends BaseService{
     boolean checkLogin(String userName,String passwd);
-    List<Rule> getMenuList(String userName);
-    List<QuickMenu> getQuickMenuList(Admin admin);
+    List<Rule> getRuleList(Collection ruleIdList);
+    List<QuickMenu> getQuickMenuList(Integer admin_Id);
     Admin getAdminInfo(String userName);
     void loadUserToCache(String userName);
-    List<User_Role> getUser2RoleList(String admin_Id);
+    List<User_Role> getUser2RoleList(Integer admin_Id);
+    List<Role_Rule> getRole2RuleList(Collection<Integer> idList);
 }

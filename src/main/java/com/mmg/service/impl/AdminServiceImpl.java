@@ -1,25 +1,14 @@
 package com.mmg.service.impl;
 
-import com.mmg.common.CacheManager;
-import com.mmg.dao.BaseDao;
-import com.mmg.entity.admin.Admin;
-import com.mmg.entity.admin.QuickMenu;
-import com.mmg.entity.admin.Role;
-import com.mmg.entity.admin.Role_Rule;
-import com.mmg.entity.admin.Rule;
-import com.mmg.entity.admin.User_Role;
+import com.mmg.entity.admin.*;
 import com.mmg.service.AdminService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by yj on 2017/5/6.
@@ -32,19 +21,64 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
     public Admin getAdminInfo(String userName) {
             DetachedCriteria criteria = DetachedCriteria.forClass(Admin.class);
             criteria.add(Restrictions.eq("adminId", userName));
-            return (Admin) baseDao.findByCriteria(criteria).get(0);
+            return (Admin)super.findByCriteria(criteria).get(0);
     }
 
-    public List<QuickMenu> getQuickMenuList(Admin admin) {
+    public boolean checkLogin(String userName, String passwd) {
+        String hql = "from Admin where adminId = ? and passWord = ?";
+        return super.getObjectCountByHql(hql,userName,passwd) >0 ? true : false;
+    }
+
+    @Cacheable(value = "adminCache")
+    public List<User_Role> getUser2RoleList(Integer admin_Id){
+        DetachedCriteria criteria = DetachedCriteria.forClass(User_Role.class);
+        criteria.add(Restrictions.ge("admin.id",admin_Id));
+        return super.findByCriteria(criteria);
+    }
+
+    @Cacheable(value = "adminCache")
+    public List<Role_Rule> getRole2RuleList(Collection<Integer> roleIdList){
+        Set<Role_Rule> rrset = new HashSet<Role_Rule>();
+        for(Integer id : roleIdList){
+            DetachedCriteria criteria = DetachedCriteria.forClass(Role_Rule.class);
+            criteria.add(Restrictions.ge("role.id",id));
+            List<Role_Rule> list = super.findByCriteria(criteria);
+            rrset.addAll(list);
+        }
+        return new ArrayList<Role_Rule>(rrset);
+    }
+
+    @Cacheable(value = "adminCache")
+    public List<Rule> getRuleList(Collection ruleIdList){
+        List<Rule> ruleList = new ArrayList<Rule>();
+        /*List<String> cacheMenuKeyList = CacheManager.getCacheListkey("menu");
+        if(null == cacheMenuKeyList || cacheMenuKeyList.size() <= 0){
+            Admin admin = (Admin) CacheManager.getCacheInfo("adminInfo");
+            Integer roleId = admin.getRole().getRoleId();
+            DetachedCriteria role_rule = DetachedCriteria.forClass(Role_Rule.class);
+            role_rule.add(Restrictions.ge("role.roleId",roleId));
+            List<Role_Rule> roleRuleList = (List<Role_Rule>)baseDao.findByCriteria(role_rule);
+            if(roleRuleList.size() <=0 )return null;
+
+            for(Iterator<Role_Rule> it = roleRuleList.iterator();it.hasNext();){
+                Integer ruleId = it.next().getRule().getRuleId();
+                Rule rule = baseDao.getObject(Rule.class,ruleId);
+                if(null != rule){
+                    ruleList.add(rule);
+                }
+            }
+        }
+        for(Iterator<String> it = cacheMenuKeyList.iterator();it.hasNext();){
+            ruleList.add((Rule) CacheManager.getCacheInfo(it.next()));
+        }*/
+        return ruleList;
+    }
+
+    public List<QuickMenu> getQuickMenuList(Integer admin_Id) {
         return null;
     }
     
-    @Cacheable(value = "adminCache")
-    public List<User_Role> getUser2RoleList(String admin_Id){
-    	DetachedCriteria criteria = DetachedCriteria.forClass(User_Role.class);
-    	criteria.add(Restrictions.eq("adminId",admin_Id));
-    	return baseDao.findByCriteria(criteria);
-    }
+
     
     public void loadUserToCache(String userName) {
 /*
@@ -80,35 +114,5 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService{
             }
         }*/
     }
-    
-    public boolean checkLogin(String userName, String passwd) {
-    	String hql = "from Admin where adminId = ? and passWord = ?";
-    	return baseDao.getObjectCountByHql(hql,userName,passwd) >0 ? true : false;
-    }
-    
-    @Cacheable(value = "adminCache")
-    public List<Rule> getMenuList(String userName){
-        List<Rule> ruleList = new ArrayList<Rule>();
-        /*List<String> cacheMenuKeyList = CacheManager.getCacheListkey("menu");
-        if(null == cacheMenuKeyList || cacheMenuKeyList.size() <= 0){
-            Admin admin = (Admin) CacheManager.getCacheInfo("adminInfo");
-            Integer roleId = admin.getRole().getRoleId();
-            DetachedCriteria role_rule = DetachedCriteria.forClass(Role_Rule.class);
-            role_rule.add(Restrictions.ge("role.roleId",roleId));
-            List<Role_Rule> roleRuleList = (List<Role_Rule>)baseDao.findByCriteria(role_rule);
-            if(roleRuleList.size() <=0 )return null;
 
-            for(Iterator<Role_Rule> it = roleRuleList.iterator();it.hasNext();){
-                Integer ruleId = it.next().getRule().getRuleId();
-                Rule rule = baseDao.getObject(Rule.class,ruleId);
-                if(null != rule){
-                    ruleList.add(rule);
-                }
-            }
-        }
-        for(Iterator<String> it = cacheMenuKeyList.iterator();it.hasNext();){
-            ruleList.add((Rule) CacheManager.getCacheInfo(it.next()));
-        }*/
-        return ruleList;
-    }
 }

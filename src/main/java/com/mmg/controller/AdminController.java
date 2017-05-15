@@ -1,9 +1,7 @@
 package com.mmg.controller;
 
 import com.mmg.entity.admin.Admin;
-import com.mmg.entity.admin.Rule;
 import com.mmg.service.AdminService;
-import com.mmg.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yj on 2017/5/13.
@@ -42,9 +38,9 @@ public class AdminController {
 
     @RequestMapping(value = "admin/getLeft.xhtml", method = RequestMethod.GET)
     public String getLeft(HttpServletRequest request, ModelMap model) {
-        List<Rule> menuList = adminService.getMenuList((String) request.getSession().getAttribute("userName"));
-        Map<String, List> menuMap = CommonUtil.groupMenuListByFiled(menuList);
-        model.putAll(menuMap);
+//        List<Rule> menuList = adminService.getRuleList((String) request.getSession().getAttribute("userName"));
+//        Map<String, List> menuMap = CommonUtil.groupMenuListByFiled(menuList);
+//        model.putAll(menuMap);
         return "admin/left.vm";
     }
 

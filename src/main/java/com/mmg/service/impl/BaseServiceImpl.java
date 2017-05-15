@@ -1,23 +1,21 @@
 package com.mmg.service.impl;
 
-import java.io.Serializable;
-import java.util.List;
-
-import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.orm.hibernate4.HibernateTemplate;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.mmg.dao.BaseDao;
 import com.mmg.entity.BaseObject;
 import com.mmg.service.BaseService;
+import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.io.Serializable;
+import java.util.List;
 @Transactional
 @Service("baseDaoService")
 public class BaseServiceImpl implements BaseService{
 	@Autowired@Qualifier("baseDao")
-	protected BaseDao baseDao;
+	private BaseDao baseDao;
 
 	
 	public <T extends BaseObject> List<T> getAllObjects(Class<T> clazz) {
@@ -44,16 +42,18 @@ public class BaseServiceImpl implements BaseService{
 		return baseDao.getObjectCount(clazz);
 	}
 
-	public List<?> findByCriteria(DetachedCriteria criteria) {
+	public <T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria) {
 		return baseDao.findByCriteria(criteria);
 	}
 
-	public List<?> findByCriteria(DetachedCriteria criteria, int from, int maxnum) {
+	public <T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria, int from, int maxnum) {
 		return baseDao.findByCriteria(criteria, from, maxnum);
 	}
 
-	public List<?> findByHql(String hql, Object... values) {
+	public <T extends BaseObject> List<T> findByHql(String hql, Object... values) {
 		return baseDao.findByHql(hql, values);
 	}
-
+	public Integer getObjectCountByHql(String hql,Object... values){
+		return baseDao.getObjectCountByHql(hql,values);
+	}
 }

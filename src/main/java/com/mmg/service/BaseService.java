@@ -1,11 +1,10 @@
 package com.mmg.service;
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.mmg.entity.BaseObject;
 import org.hibernate.criterion.DetachedCriteria;
 
-import com.mmg.entity.BaseObject;
+import java.io.Serializable;
+import java.util.List;
 
 public interface BaseService {
 	<T extends BaseObject> List<T> getAllObjects(Class<T> clazz);
@@ -17,4 +16,5 @@ public interface BaseService {
 	<T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria);
 	<T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria, int from, int maxnum);
 	<T extends BaseObject> List<T> findByHql(String hql, Object... values);
+	Integer getObjectCountByHql(String hql,Object... values);
 }
