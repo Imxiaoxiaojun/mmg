@@ -29,6 +29,7 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
             if (myException.getCode().equals(ErrorConstants.LOGINFAIL) || myException.getCode().equals(ErrorConstants.LOGINNULL)) {
                 FlashMap flashmap = RequestContextUtils.getOutputFlashMap(request);
                 flashmap.put("errorMsg", myException.getMsg());
+//                flashmap.put("errorMsg","9");
                 return new ModelAndView("redirect:/adminLogin.xhtml");
             }
         } else {

@@ -19,17 +19,19 @@ public class LoginInterceptor implements HandlerInterceptor {
     private List<String> passUrl;
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String path = request.getContextPath();
-        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
+    	 String path = request.getContextPath();
+         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    	HttpSession session = request.getSession();
+    	session.setAttribute("basePath", basePath);
+    	session.setAttribute("basePath1", "/mmg");
+    	
+    	
         String url = request.getRequestURI();
         for(Iterator<String> it = passUrl.iterator(); it.hasNext();){
             if(url.indexOf(it.next())>=0)return true;
         }
-        //获取Session
-        HttpSession session = request.getSession();
+        
         String username = (String)session.getAttribute("userName");
-
         if(username != null){
             return true;
         }

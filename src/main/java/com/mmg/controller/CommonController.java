@@ -5,10 +5,13 @@ import com.mmg.common.VerifyCodeUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.FlashMap;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +31,7 @@ public class CommonController {
 
     @RequestMapping(value = "/adminLogin.xhtml", method = RequestMethod.GET)
     public String gotoLogin(HttpServletRequest request, ModelMap model) throws MyException {
-        String path = request.getContextPath();
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-        model.put("basePath", basePath);
+    	request.getSession().getAttribute("basePath");
         return "login.vm";
     }
 

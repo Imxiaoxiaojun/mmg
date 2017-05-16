@@ -16,10 +16,11 @@ import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
 import com.mmg.service.AdminService;
 import com.mmg.util.CommonUtil;
+import com.mmg.util.StringUtil;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:appContext_base.xml","classpath:appContext_hibernate.xml"})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations={"classpath:appContext_base.xml","classpath:appContext_hibernate.xml"})
 public class AdminServiceImplTest {
 	private Log log = LogFactory.getLog(this.getClass());
 	@Autowired
@@ -27,6 +28,7 @@ public class AdminServiceImplTest {
 
 	@Test
 	public void assertTru() {
+		log.debug(StringUtil.getMd5Stri("123123"));
 //		Admin admin = adminService.getAdminInfo("admin");
 //		List<Role> roleList = adminService.getRoleList(admin.getId());
 //		List<QuickMenu> quickMenuList =adminService.getQuickMenuList(admin.getId());

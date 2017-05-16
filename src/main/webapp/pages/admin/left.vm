@@ -35,12 +35,12 @@
             #if($parent.level == 1)
                 <dd>
                     <div class="title">
-                        <span><img src="$parent.picSrc"/></span>$!{parent.ruleName}
+                        <span><img src="../$parent.picSrc"/></span>$!{parent.ruleName}
                     </div>
                     <ul class="menuson">
                         #if($menuList2)
                             #foreach($sub in $menuList2)
-                                #if($sub.parentId == $parent.ruleId)
+                                #if($sub.parentId == $parent.Id)
                                     <li class="active"><cite></cite><a href="$sub.targetUrl" target="">$sub.ruleName</a><i></i>
                                     </li>
                                 #end

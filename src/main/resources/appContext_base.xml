@@ -14,20 +14,29 @@
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:ehcache.xml"/>
-    </bean>
-
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="ehcache"/>
-    </bean>
-
     <!-- 启用缓存注解开关 -->
-    <cache:annotation-driven cache-manager="cacheManager"/>
+    <cache:annotation-driven />
 
     <mvc:annotation-driven />
 
     <context:component-scan base-package="com.mmg.controller,com.mmg.dao,com.mmg.service" />
+    
+    <bean id="configs" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location"> 
+			<value>classpath:config.properties</value> 
+		</property> 
+    </bean>
+    
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+
+
     
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/pages/" /> <!-- velocity前端渲染文件.vm路径设置-->
