@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
-
+@SuppressWarnings("unchecked")
 @Repository("baseDao")
 public class BaseDaoImpl implements BaseDao {
 
@@ -51,7 +51,7 @@ public class BaseDaoImpl implements BaseDao {
         return Integer.parseInt("" + result.get(0));
     }
 
-    public List<?> findByHql(String hql, Object... values) {
+	public List<?> findByHql(String hql, Object... values) {
         return hibernateTemplate.find(hql, values);
     }
 

@@ -32,12 +32,13 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
                 return new ModelAndView("redirect:/adminLogin.xhtml");
             }
         } else {
+        	logger.error("系统错误"+e);
             myException = new MyException(ErrorConstants.UNDERFINE, "系统未知错误");
         }
 
         //向前台返回错误信息
         ModelAndView modelAndView = new ModelAndView();
-        Map map = new HashMap();
+        Map<String,Object> map = new HashMap<>();
         map.put("errCode", myException.getCode());
         map.put("errMsg", myException.getMsg());
         String jsonStr = JsonUtil.toJson(map);

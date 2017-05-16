@@ -13,7 +13,6 @@ public interface AdminService extends BaseService{
     List<Rule> getAllRuleList();
     List<QuickMenu> getQuickMenuList(Integer admin_Id);
     Admin getAdminInfo(String userName);
-    void loadUserToCache(String userName);
-    List<User_Role> getUser2RoleList(Integer admin_Id);
-    List<Role_Rule> getRole2RuleList(Collection<Integer> idList);
+    List<Role> getRoleList(Integer admin_Id);
+    List<Rule> getRuleList(Collection<Object> idList);
 }

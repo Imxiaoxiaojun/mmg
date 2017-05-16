@@ -43,7 +43,7 @@ public class LoginController {
         }
 
         request.getSession().setAttribute("userName",userName);
-        adminService.loadUserToCache((String) request.getSession().getAttribute("userName"));
         return "redirect:adminConsole.xhtml";
+        
     }
 }
