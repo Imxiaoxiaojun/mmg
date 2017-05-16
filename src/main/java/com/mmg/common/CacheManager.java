@@ -27,7 +27,7 @@ public class CacheManager {
 	 * 后台 缓存 end
 	 ********************************************************/
 
-	private static Map<String, Object> cacheMap = new HashMap<>();
+	private static Map<String, Object> cacheMap = new HashMap<String, Object>();
 
 	// 单实例构造方法
 	private CacheManager() {
@@ -192,7 +192,7 @@ public class CacheManager {
 
 	// 获取缓存对象中的所有键值名称
 	public static ArrayList<String> getCacheAllkey() {
-		ArrayList<String> a = new ArrayList<>();
+		ArrayList<String> a = new ArrayList<String>();
 		try {
 			Iterator<Entry<String, Object>> i = cacheMap.entrySet().iterator();
 			while (i.hasNext()) {
@@ -207,7 +207,7 @@ public class CacheManager {
 
 	// 获取缓存对象中指定类型 的键值名称
 	public static ArrayList<String> getCacheListkey(String type) {
-		ArrayList<String> a = new ArrayList<>();
+		ArrayList<String> a = new ArrayList<String>();
 		String key;
 		try {
 			Iterator<Entry<String,Object>> i = cacheMap.entrySet().iterator();

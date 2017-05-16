@@ -4,7 +4,6 @@
     <title>头</title>
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
     <script language="JavaScript" src="../js/jquery.js"></script>
-##    <script language="JavaScript" src="../js/common/common.js"/>
 </head>
 
 <body style="background:url(../image/topbg.gif) repeat-x;">
@@ -16,7 +15,7 @@
     <ul>
         <li><span><img src="../image/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
         <li><a href="#">关于</a></li>
-        <li><a href="$!{basePath}admin_logout.xhtml" target="_parent">退出</a></li>
+        <li><a href="admin_logout.xhtml" target="_parent">退出</a></li>
     </ul>
 
     <div class="user">

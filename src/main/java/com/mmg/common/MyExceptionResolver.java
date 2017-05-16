@@ -39,7 +39,7 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
 
         //向前台返回错误信息
         ModelAndView modelAndView = new ModelAndView();
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("errCode", myException.getCode());
         map.put("errMsg", myException.getMsg());
         String jsonStr = JsonUtil.toJson(map);

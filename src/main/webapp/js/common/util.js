@@ -11,7 +11,9 @@ var _ajax = function (url, type, param, succallback, failcallback) {
         async: true,
         data: param || {},
         dataType: "text",
-        success: succallback,
+        success: succallback||function (data) {
+            console.log(data);
+        },
         error: failcallback || function (data) {
             console.log(data);
         }
@@ -40,3 +42,6 @@ var FormDataUtil = function () {
 
 var changeCode = function () {
 }
+
+
+

@@ -1,5 +1,10 @@
 package com.mmg.util;
 
+import com.mmg.entity.admin.Rule;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
@@ -9,12 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.mmg.entity.admin.Rule;
 
 /**
  * Created by yj on 2017/5/13.
@@ -27,7 +26,7 @@ public class CommonUtil {
         for(Rule rule : list){
             List<Rule> tempList = map.get("menuList"+rule.getLevel());
             if (tempList == null) {
-                tempList = new ArrayList<>();
+                tempList = new ArrayList<Rule>();
                 tempList.add(rule);
                 map.put("menuList"+rule.getLevel(), tempList);
             }
@@ -52,7 +51,7 @@ public class CommonUtil {
      */
 
     public static List<Object> getFieldList(List<?> list, Class<?> clazz ,String uniqueClassName, String fieldName){
-		List<Object> filedList = new ArrayList<>();
+		List<Object> filedList = new ArrayList<Object>();
         try{
             if(!StringUtils.isBlank(uniqueClassName)){
                 Field uniqueClassField = clazz.getDeclaredField(uniqueClassName);

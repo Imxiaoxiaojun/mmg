@@ -1,10 +1,8 @@
 package com.mmg.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.mmg.common.ErrorConstants;
+import com.mmg.common.MyException;
+import com.mmg.common.VerifyCodeUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,8 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mmg.common.MyException;
-import com.mmg.common.VerifyCodeUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by yj on 2017/5/5.
@@ -62,7 +61,7 @@ public class CommonController {
     public void checkCaptchaId(HttpServletRequest request, HttpServletResponse response, String captchaId, ModelMap model) throws MyException {
         String sverCode = (String) request.getSession().getAttribute("verCode");
         if (StringUtils.isBlank(captchaId) || !captchaId.toLowerCase().equals(sverCode.toLowerCase())) {
-            //throw new MyException(ErrorConstants.VERCODEFAIL, "验证码错误");
+            throw new MyException(ErrorConstants.VERCODEFAIL, "验证码错误");
         }
         request.getSession().setAttribute("verCodeCheck", true);
     }
