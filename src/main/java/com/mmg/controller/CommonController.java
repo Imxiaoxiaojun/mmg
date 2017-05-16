@@ -1,21 +1,20 @@
 package com.mmg.controller;
 
-import com.mmg.common.MyException;
-import com.mmg.common.VerifyCodeUtil;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.FlashMap;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.mmg.common.MyException;
+import com.mmg.common.VerifyCodeUtil;
 
 /**
  * Created by yj on 2017/5/5.
@@ -31,7 +30,18 @@ public class CommonController {
 
     @RequestMapping(value = "/adminLogin.xhtml", method = RequestMethod.GET)
     public String gotoLogin(HttpServletRequest request, ModelMap model) throws MyException {
-    	request.getSession().getAttribute("basePath");
+    	String ip = request.getHeader("x-forwarded-for");  
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("Proxy-Client-IP");  
+        } 
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("WL-Proxy-Client-IP");  
+        }  
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getRemoteAddr();  
+        }  
+        logger.info(ip);  
+        request.getSession().setAttribute("clientIp", ip);
         return "login.vm";
     }
 

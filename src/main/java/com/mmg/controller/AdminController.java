@@ -59,4 +59,10 @@ public class AdminController {
         model.put("adminInfo",admin);
         return "admin/index.vm";
     }
+    
+    @RequestMapping(value = "admin/admin_logout.xhtml", method = RequestMethod.GET)
+    public String adminLogout(HttpServletRequest request, ModelMap model){
+    	request.getSession().removeAttribute("userName");
+    	return "redirect:/adminLogin.xhtml";
+    }
 }
