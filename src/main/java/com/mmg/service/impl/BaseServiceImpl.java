@@ -17,7 +17,6 @@ public class BaseServiceImpl implements BaseService{
 	@Autowired@Qualifier("baseDao")
 	private BaseDao baseDao;
 
-	
 	public <T extends BaseObject> List<T> getAllObjects(Class<T> clazz) {
 		return baseDao.getAllObjects(clazz);
 	}

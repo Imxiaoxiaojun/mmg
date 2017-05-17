@@ -1,11 +1,10 @@
 package com.mmg.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.mmg.entity.admin.Admin;
+import com.mmg.entity.admin.Role;
+import com.mmg.entity.admin.Rule;
+import com.mmg.service.AdminService;
+import com.mmg.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,11 +12,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mmg.entity.admin.Admin;
-import com.mmg.entity.admin.Role;
-import com.mmg.entity.admin.Rule;
-import com.mmg.service.AdminService;
-import com.mmg.util.CommonUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yj on 2017/5/13.
@@ -64,5 +62,24 @@ public class AdminController {
     public String adminLogout(HttpServletRequest request, ModelMap model){
     	request.getSession().removeAttribute("userName");
     	return "redirect:/adminLogin.xhtml";
+    }
+
+    @RequestMapping(value = "admin/getRuleList.xhtml", method = RequestMethod.GET)
+    public String getRuleList(HttpServletRequest request, ModelMap model){
+        List<Rule> ruleList = adminService.getAllRuleList(Rule.class);
+        model.put("ruleList",ruleList);
+        return "ruleList.vm";
+    }
+    @RequestMapping(value = "admin/getRoleList.xhtml", method = RequestMethod.GET)
+    public String getRoleList(HttpServletRequest request, ModelMap model){
+        List<Role> roleList = adminService.getAllRoleList(Role.class);
+        model.put("roleList",roleList);
+        return "roleList.vm";
+    }
+    @RequestMapping(value = "admin/getAdminList.xhtml", method = RequestMethod.GET)
+    public String getAdminList(HttpServletRequest request, ModelMap model){
+        List<Admin> adminList = adminService.getAllAdminList(Admin.class);
+        model.put("adminList",adminList);
+        return "adminList.vm";
     }
 }

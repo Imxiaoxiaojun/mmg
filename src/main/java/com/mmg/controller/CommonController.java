@@ -1,6 +1,5 @@
 package com.mmg.controller;
 
-import com.mmg.common.ErrorConstants;
 import com.mmg.common.MyException;
 import com.mmg.common.VerifyCodeUtil;
 import org.apache.commons.lang.StringUtils;
@@ -61,7 +60,7 @@ public class CommonController {
     public void checkCaptchaId(HttpServletRequest request, HttpServletResponse response, String captchaId, ModelMap model) throws MyException {
         String sverCode = (String) request.getSession().getAttribute("verCode");
         if (StringUtils.isBlank(captchaId) || !captchaId.toLowerCase().equals(sverCode.toLowerCase())) {
-            throw new MyException(ErrorConstants.VERCODEFAIL, "验证码错误");
+            //throw new MyException(ErrorConstants.VERCODEFAIL, "验证码错误");
         }
         request.getSession().setAttribute("verCodeCheck", true);
     }

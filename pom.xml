@@ -8,6 +8,7 @@
     <name>myManage Maven Webapp</name>
     <properties>
         <spring.version>4.3.8.RELEASE</spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>http://maven.apache.org</url>
 	<dependencies>

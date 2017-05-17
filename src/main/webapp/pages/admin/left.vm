@@ -41,7 +41,7 @@
                         #if($menuList2)
                             #foreach($sub in $menuList2)
                                 #if($sub.parentId == $parent.Id)
-                                    <li class="active"><cite></cite><a href="$sub.targetUrl" target="">$sub.ruleName</a><i></i>
+                                    <li class="active"><cite></cite><a href="$sub.targetUrl" target="rightFrame">$sub.ruleName</a><i></i>
                                     </li>
                                 #end
                             #end

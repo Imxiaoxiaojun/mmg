@@ -1,10 +1,12 @@
 package com.mmg.service.impl;
 
+import com.mmg.entity.BaseObject;
 import com.mmg.entity.admin.*;
 import com.mmg.service.AdminService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,8 +54,20 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService {
 	}
 
 	@Cacheable(value = "adminCache")
-	public List<Rule> getAllRuleList() {
-		return super.getAllObjects(Rule.class);
+	public  <T extends BaseObject> List<T> getAllRuleList(Class<T> clazz) {
+		return super.getAllObjects(clazz);
+	}
+	@Cacheable(value = "adminCache")
+	public  <T extends BaseObject> List<T> getAllRoleList(Class<T> clazz) {
+		return super.getAllObjects(clazz);
+	}
+	@Cacheable(value = "adminCache")
+	public  <T extends BaseObject> List<T> getAllAdminList(Class<T> clazz) {
+		return super.getAllObjects(clazz);
+	}
+	@CacheEvict(value = "adminCache",key = "#entity.class")
+	public <T extends BaseObject> T addObject(T entity){
+		return super.addObject(entity);
 	}
 
 	@Cacheable(value = "adminCache")

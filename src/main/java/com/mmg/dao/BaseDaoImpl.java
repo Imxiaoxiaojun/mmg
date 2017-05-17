@@ -6,6 +6,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,7 @@ public class BaseDaoImpl implements BaseDao {
     @Qualifier("hibernateTemplate")
     protected HibernateTemplate hibernateTemplate;
 
+    @Cacheable(value = "adminCache")
     public <T extends BaseObject> List<T> getAllObjects(Class<T> clazz) {
         return hibernateTemplate.loadAll(clazz);
     }
