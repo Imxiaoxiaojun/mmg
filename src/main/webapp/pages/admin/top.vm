@@ -2,18 +2,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>头</title>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
-    <script language="JavaScript" src="../js/jquery.js"></script>
+    <link href="${rc.contextPath}/css/styles.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="${rc.contextPath}/js/jquery.js"></script>
 </head>
 
-<body style="background:url(../image/topbg.gif) repeat-x;">
+<body style="background:url(${rc.contextPath}/image/topbg.gif) repeat-x;">
 <div class="topleft">
-    <a href="main.html" target="_parent"><img src="../image/logo1.png" title="系统首页" /></a>
+    <a href="main.html" target="_parent"><img src="${rc.contextPath}/image/logo1.png" title="系统首页" /></a>
 </div>
 
 <div class="topright">
     <ul>
-        <li><span><img src="../image/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
+        <li><span><img src="${rc.contextPath}/image/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
         <li><a href="#">关于</a></li>
         <li><a href="admin_logout.xhtml" target="_parent">退出</a></li>
     </ul>

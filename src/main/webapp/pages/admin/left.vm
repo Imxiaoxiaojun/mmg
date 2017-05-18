@@ -2,8 +2,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>菜单</title>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
-    <script language="JavaScript" src="../js/jquery.js"></script>
+    <link href="${rc.contextPath}/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script language="JavaScript" src="${rc.contextPath}/js/jquery.js"></script>
     <script>
         $(function () {
             //导航切换
@@ -35,13 +35,13 @@
             #if($parent.level == 1)
                 <dd>
                     <div class="title">
-                        <span><img src="../$parent.picSrc"/></span>$!{parent.ruleName}
+                        <span><img src="${rc.contextPath}/$parent.picSrc"/></span>$!{parent.ruleName}
                     </div>
                     <ul class="menuson">
                         #if($menuList2)
                             #foreach($sub in $menuList2)
                                 #if($sub.parentId == $parent.Id)
-                                    <li class="active"><cite></cite><a href="$sub.targetUrl" target="rightFrame">$sub.ruleName</a><i></i>
+                                    <li class="active"><cite></cite><a href="${rc.contextPath}/$sub.targetUrl" target="rightFrame">$sub.ruleName</a><i></i>
                                     </li>
                                 #end
                             #end
