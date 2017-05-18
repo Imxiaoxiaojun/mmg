@@ -1,6 +1,5 @@
 package com.mmg.controller;
 
-import com.mmg.common.Constants;
 import com.mmg.entity.admin.Admin;
 import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
@@ -69,18 +68,18 @@ public class AdminController {
     public String getRuleList(HttpServletRequest request, ModelMap model){
         List<Rule> ruleList = adminService.getAllRuleList(Rule.class);
         model.put("ruleList",ruleList);
-        return "ruleList.vm";
+        return "/admin/ruleList.vm";
     }
     @RequestMapping(value = "admin/getRoleList.xhtml", method = RequestMethod.GET)
     public String getRoleList(HttpServletRequest request, ModelMap model){
         List<Role> roleList = adminService.getAllRoleList(Role.class);
         model.put("roleList",roleList);
-        return "roleList.vm";
+        return "/admin/roleList.vm";
     }
     @RequestMapping(value = "admin/getAdminList.xhtml", method = RequestMethod.GET)
     public String getAdminList(HttpServletRequest request, ModelMap model){
         List<Admin> adminList = adminService.getAllAdminList(Admin.class);
         model.put("adminList",adminList);
-        return "adminList.vm";
+        return "/admin/adminList.vm";
     }
 }
