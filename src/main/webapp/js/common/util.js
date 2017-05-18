@@ -4,7 +4,6 @@ var getElementById = function (val) {
 }
 
 var _ajax = function (url, type, param, succallback, failcallback) {
-    debugger;
     $.ajax({
         type: type,
         url: url,

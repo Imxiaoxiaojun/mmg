@@ -1,6 +1,3 @@
 <ul>
-#foreach( $entry in $list )
-    <li>$entry.adminId</li>
-    <li>$entry.userName</li>
-    <li>$entry.PassWord</li>
-#end
+    <li>${rc.contextPath}</li>
+</ul>

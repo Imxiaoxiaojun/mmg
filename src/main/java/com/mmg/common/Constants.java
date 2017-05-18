@@ -5,4 +5,6 @@ package com.mmg.common;
  */
 public class Constants {
     public static final String JUSERNAME = "j_userName";
+    public static final String SYSROLETYPE = "1";
+    public static final String sysRULETYPE = "1";
 }

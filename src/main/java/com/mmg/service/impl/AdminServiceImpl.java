@@ -54,20 +54,16 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService {
 	}
 
 	@Cacheable(value = "adminCache")
-	public  <T extends BaseObject> List<T> getAllRuleList(Class<T> clazz) {
+	public	List<Rule> getAllRuleList(Class<Rule> clazz) {
 		return super.getAllObjects(clazz);
 	}
 	@Cacheable(value = "adminCache")
-	public  <T extends BaseObject> List<T> getAllRoleList(Class<T> clazz) {
+	public  List<Role> getAllRoleList(Class<Role> clazz) {
 		return super.getAllObjects(clazz);
 	}
 	@Cacheable(value = "adminCache")
-	public  <T extends BaseObject> List<T> getAllAdminList(Class<T> clazz) {
+	public  List<Admin> getAllAdminList(Class<Admin> clazz) {
 		return super.getAllObjects(clazz);
-	}
-	@CacheEvict(value = "adminCache",key = "#entity.class")
-	public <T extends BaseObject> T addObject(T entity){
-		return super.addObject(entity);
 	}
 
 	@Cacheable(value = "adminCache")
@@ -77,5 +73,19 @@ public class AdminServiceImpl extends BaseServiceImpl implements AdminService {
 		criteria.setProjection(Projections.groupProperty("rule"));
 		return super.findByCriteria(criteria);
 	}
+	
+	@CacheEvict(value = "adminCache",key = "#entity.class")
+	public <T extends BaseObject> T addObject(T entity){
+		return super.addObject(entity);
+	}
+	
+	@CacheEvict(value = "adminCache",key = "#entity.class")
+	public <T extends BaseObject> T removeObject(T entity){
+		return super.removeObject(entity);
+	}
 
+	@CacheEvict(value = "adminCache",key = "#entity.class")
+	public <T extends BaseObject> T updateObject(T entity){
+		return super.updateObject(entity);
+	}
 }

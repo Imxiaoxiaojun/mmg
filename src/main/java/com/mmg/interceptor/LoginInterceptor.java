@@ -22,8 +22,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     	 String path = request.getContextPath();
          String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     	HttpSession session = request.getSession();
-    	session.setAttribute("basePath", basePath);
-    	session.setAttribute("basePath1", "/mmg");
+//    	session.setAttribute("basePath", basePath);
+//    	session.setAttribute("basePath1", "/mmg");
     	
     	
         String url = request.getRequestURI();

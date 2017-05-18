@@ -24,15 +24,10 @@ public class TestController {
     @Qualifier("baseDaoService")
     private BaseService baseDaoService;
 
-    @RequestMapping(value = "/test/test.xhtml", method = RequestMethod.POST)
+    @RequestMapping(value = "/test/test.xhtml", method = RequestMethod.GET)
     public String test(HttpServletRequest request, ModelMap model, HttpServletResponse resp) throws Exception {
 
-        List<Admin> list = baseDaoService.getAllObjects(Admin.class);
-        model.put("list", list);
-        FlashMap flashmap = RequestContextUtils.getOutputFlashMap(request);
-        flashmap.put("j_userName", 123);
-        flashmap.put("captchaId", 1123);
-//        return "test.vm";
-        return "redirect:/adminLogin.xhtml";
+        return "test.vm";
+//        return "redirect:/adminLogin.xhtml";
     }
 }

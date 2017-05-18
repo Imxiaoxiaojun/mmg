@@ -30,11 +30,13 @@ public class Rule extends BaseObject {
 	private Timestamp createTime;
 	@Column(name = "lastUpdateTime", length = 30, nullable = false)
 	private Timestamp lastUpdateTime;
-	@Column(name = "picSrc", length = 50, nullable = false)
+	@Column(name = "picSrc", length = 50)
 	private String picSrc;
 	@Column(name = "targetUrl", length = 50)
 	private String targetUrl;
-
+	@Column(name = "ruleType", columnDefinition="varchar(5) default 1")//1-管理员的权限
+	private String ruleType;
+	
 	public String getRuleId() {
 		return ruleId;
 	}
@@ -111,11 +113,20 @@ public class Rule extends BaseObject {
 		this.id = id;
 	}
 
+	
+	public String getRuleType() {
+		return ruleType;
+	}
+
+	public void setRuleType(String ruleType) {
+		this.ruleType = ruleType;
+	}
+
 	@Override
 	public String toString() {
 		return "Rule [id=" + id + ", ruleId=" + ruleId + ", ruleName=" + ruleName + ", level=" + level + ", parentId="
 				+ parentId + ", createTime=" + createTime + ", lastUpdateTime=" + lastUpdateTime + ", picSrc=" + picSrc
-				+ ", targetUrl=" + targetUrl + "]";
+				+ ", targetUrl=" + targetUrl + ", ruleType=" + ruleType + "]";
 	}
 
 }

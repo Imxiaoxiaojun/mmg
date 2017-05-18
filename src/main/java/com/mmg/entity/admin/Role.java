@@ -26,6 +26,9 @@ public class Role extends BaseObject {
 	private Timestamp createTime;
 	@Column(name = "lastUpdateTime", length = 30, nullable = false)
 	private Timestamp lastUpdateTime;
+	@Column(name = "roleType",columnDefinition="varchar(5) default 1")//1-管理员的角色
+	private String roleType;
+	
 
 	public String getRoleId() {
 		return roleId;
@@ -70,11 +73,19 @@ public class Role extends BaseObject {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(String roleType) {
+		this.roleType = roleType;
+	}
 
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", roleId=" + roleId + ", roleName=" + roleName + ", createTime=" + createTime
-				+ ", lastUpdateTime=" + lastUpdateTime + "]";
+				+ ", lastUpdateTime=" + lastUpdateTime + ", roleType=" + roleType + "]";
 	}
 
 }

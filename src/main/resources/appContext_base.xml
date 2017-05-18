@@ -21,12 +21,13 @@
 
     <context:component-scan base-package="com.mmg.controller,com.mmg.dao,com.mmg.service" />
     
-    <bean id="configs" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    	<property name="location"> 
-			<value>classpath:config.properties</value> 
-		</property> 
-    </bean>
-    
+    <bean id ="propertiesUtil" class="com.mmg.util.PropertiesUtils" />
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:config.properties</value>
+		</property>
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
 
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
         <property name="cacheManager" ref="ehcache"/>
@@ -46,6 +47,8 @@
         <property name="order" value="1"/>
         <property name="prefix" value=""/>
         <property name="viewNames" value="*.vm,*.html"/>
+        <property name="exposeSpringMacroHelpers" value="true"/> 
+		<property name="requestContextAttribute" value="rc"/> 
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityView" />
     </bean>
