@@ -3,6 +3,9 @@ package com.mmg.util;
 import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by yj on 2017/5/13.
  */
@@ -20,5 +23,13 @@ public class JsonUtil {
             return gson.toJson(JsonNull.INSTANCE);
         }
         return gson.toJson(src);
+    }
+
+    public static void main(String[] args) {
+        Map map = new HashMap();
+        map.put("name","aaa");
+        map.put("age","123");
+        String jsonstr = toJson(map);
+        System.out.println(jsonstr);
     }
 }

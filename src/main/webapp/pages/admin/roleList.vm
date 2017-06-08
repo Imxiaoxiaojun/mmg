@@ -3,30 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>分类</title>
-    <link href="${rc.contextPath}/css/styles.css" rel="stylesheet" type="text/css" />
+    <link type="text/css"  href="${rc.contextPath}/css/styles.css" rel="stylesheet" />
     <script type="text/javascript" src="${rc.contextPath}/js/jquery.js"></script>
-
-#* <script type="text/javascript">
-     $(document).ready(function(){
-         $(".click").click(function(){
-             $(".tip").fadeIn(200);
-         });
-
-         $(".tiptop a").click(function(){
-             $(".tip").fadeOut(200);
-         });
-
-         $(".sure").click(function(){
-             $(".tip").fadeOut(100);
-         });
-
-         $(".cancel").click(function(){
-             $(".tip").fadeOut(100);
-         });
-
-     });
- </script>*#
-
+    <script type="text/javascript" src="${rc.contextPath}/js/common/common.js"></script>
 
 </head>
 
@@ -80,7 +59,7 @@
     <table class="tablelist">
         <thead>
         <tr>
-            <th><input name="" type="checkbox" value=""/></th>
+            <th><input id="checkAll" type="checkbox" value="" onclick="checkAll('roleBox')"/></th>
             <th>编号</th>
             <th>角色id</th>
             <th>角色名称</th>
@@ -95,7 +74,7 @@
                 #foreach($role in $roleList)
                     #if($role.roleType == 1)
                     <tr>
-                        <td><input name="" type="checkbox" value="" /></td>
+                        <td><input name="roleBox" type="checkbox" value="$!{role.roleId}" /></td>
                         <td>$!{i}</td>
                         <td>$!{role.roleId}</td>
                         <td>$!{role.roleName}</td>

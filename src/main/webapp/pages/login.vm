@@ -39,10 +39,10 @@
         <br/>
         <div class="clearfix"></div>
         <h2 class="m-t-0 m-b-15">Login</h2>
-        <input type="text" class="login-control m-b-10" placeholder="用户名" id="userName" name="userName" value="$!{j_userName}"><br/>
-        <input type="password" class="login-control" placeholder="密码" id ="passWord" name="passWord" value="123123"><br/>
+        <input type="text" class="login-control m-b-10" placeholder="用户名" id="userName" name="userName" value="$!{j_userName}" maxlength="15"><br/>
+        <input type="password" class="login-control" placeholder="密码" id ="passWord" name="passWord" value="123123" maxlength="15"><br/>
         <div  class="verifyImg-div">
-            <input type="text" class="m-t-10  login-control " placeholder="验证码" value="$!{captchaId}" id="captchaId" name="captchaId">&nbsp;&nbsp;
+            <input type="text" class="m-t-10  login-control " placeholder="验证码" value="$!{captchaId}" id="captchaId" name="captchaId" maxlength="4">&nbsp;&nbsp;
             <img id="verifyImg" src="${rc.contextPath}/getCaptchaId.xhtml" class="verifyImg" onclick="javascript:this.src='getCaptchaId.xhtml?code='+Math.random()">
             <br/>
         </div>

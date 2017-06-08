@@ -5,6 +5,7 @@
     <title>分类</title>
     <link href="${rc.contextPath}/css/styles.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="${rc.contextPath}/js/jquery.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/js/common/common.js"></script>
 
    #* <script type="text/javascript">
         $(document).ready(function(){
@@ -80,7 +81,7 @@
     <table class="tablelist">
         <thead>
         <tr>
-            <th><input name="" type="checkbox" value=""/></th>
+            <th><input id="checkAll" type="checkbox" value="" onclick="checkAll('ruleBox')"/></th>
             <th>编号</th>
             <th>菜单id</th>
             <th>菜单级别</th>
@@ -99,7 +100,7 @@
             #foreach($rule in $ruleList)
                 #if($rule.ruleType == 1)
                 <tr>
-                    <td><input name="" type="checkbox" value="" /></td>
+                    <td><input name="ruleBox" type="checkbox" value="$!{rule.ruleId}" /></td>
                     <td>$!{i}</td>
                     <td>$!{rule.ruleId}</td>
                     <td>$!{rule.level}</td>

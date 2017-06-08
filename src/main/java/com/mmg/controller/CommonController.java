@@ -53,7 +53,7 @@ public class CommonController {
 
         String verifyCode = VerifyCodeUtil.generateVerifyCode(4);
         request.getSession().setAttribute("verCode", verifyCode.toLowerCase());
-        VerifyCodeUtil.outputImage(80, 28, response.getOutputStream(), verifyCode);
+        VerifyCodeUtil.outputImage(70, 30, response.getOutputStream(), verifyCode);
     }
 
     @RequestMapping(value = "/checkCaptchaId.xhtml", method = RequestMethod.GET)

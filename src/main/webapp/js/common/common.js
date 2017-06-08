@@ -23,3 +23,10 @@ $(function(){
         }
     });
 })*/
+var checkAll = function (boxName) {
+    if($('#checkAll').is(':checked')){
+        $("[name = "+boxName+"]:checkbox").attr("checked", true);
+    }else{
+        $("[name = "+boxName+"]:checkbox").attr("checked", false);
+    }
+}

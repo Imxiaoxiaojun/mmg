@@ -17,8 +17,7 @@ public abstract class BaseObject extends Cache implements Serializable {
 
     @Override
     public final boolean equals(Object obj) {
-        if (this == obj)
-            return true;
+        if (this == obj) return true;
         if (getClass() != obj.getClass())
             return false;
         BaseObject other = (BaseObject) obj;

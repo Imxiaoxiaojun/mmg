@@ -1,10 +1,12 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>分类</title>
     <link href="${rc.contextPath}/css/styles.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="${rc.contextPath}/js/jquery.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/js/admin/admin.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/js/common/util.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/js/common/common.js"></script>
 
 #* <script type="text/javascript">
      $(document).ready(function(){
@@ -46,7 +48,7 @@
     <div class="tools">
 
         <ul class="toolbar">
-            <li class="click"><span><img src="${rc.contextPath}/image/t01.png" /></span><a href="type_add.jsp">添加</a></li>
+            <li class="click"><span><img src="${rc.contextPath}/image/t01.png" /></span><a href="javascript:addAdmin()">添加</a></li>
             <li class="click"><span><img src="${rc.contextPath}/image/t02.png" /></span><a href="type_add.jsp">修改</a></li>
             <li><span><img src="${rc.contextPath}/image/t03.png" /></span><a href="type_add.jsp">删除</a></li>
         </ul>
@@ -80,7 +82,7 @@
     <table class="tablelist">
         <thead>
         <tr>
-            <th><input name="" type="checkbox" value=""/></th>
+            <th><input id="checkAll" type="checkbox" value="" onclick="checkAll('adminBox')"/></th>
             <th>编号</th>
             <th>管理员id</th>
             <th>管理员名称</th>
@@ -91,11 +93,13 @@
         </tr>
         </thead>
         <tbody>
-            #if($adminList)
-                #set ($i=1)
-                #foreach($admin in $adminList)
+        <form id="form1" action="#" method="get">
+            <input type="hidden" name = "adminId" id="adminId" />
+                #if($adminList)
+                    #set ($i=1)
+                    #foreach($admin in $adminList)
                     <tr>
-                        <td><input name="" type="checkbox" value="" /></td>
+                        <td><input name="adminBox" type="checkbox" value="$!{admin.adminId}" /></td>
                         <td>$!{i}</td>
                         <td>$!{admin.adminId}</td>
                         <td>$!{admin.adminName}</td>
@@ -107,11 +111,12 @@
                         </td>
                     </tr>
                         #set($i=$i+1)
+                    #end
                 #end
-            #end
-        </tbody>
+            </tbody>
+        <span id="EEE" ></span><br/>
+        </form>
     </table>
-
 </div>
 
 <script type="text/javascript">

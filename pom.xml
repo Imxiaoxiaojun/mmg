@@ -8,6 +8,7 @@
     <name>myManage Maven Webapp</name>
     <properties>
         <spring.version>4.3.8.RELEASE</spring.version>
+        <cxf.version>3.1.8</cxf.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>http://maven.apache.org</url>
@@ -229,7 +230,21 @@
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.2</version>
 		</dependency>
-        
+
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>3.1.11</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>3.1.11</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>myManage</finalName>

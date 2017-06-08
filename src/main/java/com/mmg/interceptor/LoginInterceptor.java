@@ -1,5 +1,6 @@
 package com.mmg.interceptor;
 
+import com.mmg.common.Constants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -19,19 +20,15 @@ public class LoginInterceptor implements HandlerInterceptor {
     private List<String> passUrl;
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    	 String path = request.getContextPath();
-         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     	HttpSession session = request.getSession();
-//    	session.setAttribute("basePath", basePath);
-//    	session.setAttribute("basePath1", "/mmg");
-    	
+
     	
         String url = request.getRequestURI();
         for(Iterator<String> it = passUrl.iterator(); it.hasNext();){
             if(url.indexOf(it.next())>=0)return true;
         }
         
-        String username = (String)session.getAttribute("userName");
+        String username = (String)session.getAttribute(Constants.USERNAME);
         if(username != null){
             return true;
         }
@@ -43,11 +40,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        logger.debug("aaa");
+        //TODO
     }
 
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        logger.debug("aaa");
+        //TODO
     }
 
     public void setPassUrl(List<String> passUrl) {

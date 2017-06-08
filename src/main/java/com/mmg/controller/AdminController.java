@@ -1,5 +1,6 @@
 package com.mmg.controller;
 
+import com.mmg.common.Constants;
 import com.mmg.entity.admin.Admin;
 import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
@@ -60,7 +61,7 @@ public class AdminController {
     
     @RequestMapping(value = "admin/admin_logout.xhtml", method = RequestMethod.GET)
     public String adminLogout(HttpServletRequest request, ModelMap model){
-    	request.getSession().removeAttribute("userName");
+    	request.getSession().removeAttribute(Constants.USERNAME);
     	return "redirect:/adminLogin.xhtml";
     }
 
@@ -81,5 +82,10 @@ public class AdminController {
         List<Admin> adminList = adminService.getAllAdminList(Admin.class);
         model.put("adminList",adminList);
         return "/admin/adminList.vm";
+    }
+    @RequestMapping(value = "admin/updateAdmin.xhtml")
+    public String updateAdmin(HttpServletRequest request, ModelMap model, String adminId){
+
+        return "/admin/updateAdmin.vm";
     }
 }
