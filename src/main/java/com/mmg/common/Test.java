@@ -1,6 +1,8 @@
 package com.mmg.common;
 
-import com.mmg.util.StringUtil;
+import com.mmg.webservice.HelloWorld;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
     public static void main(String[] args) throws Exception {
@@ -30,6 +32,10 @@ public class Test {
 //        while (it.hasNext()){
 //            System.out.println(CacheManager.getCacheInfo(it.next()).toString());
 //        }
-        System.out.println(StringUtil.getMd5Stri("123456"));
-}
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("appContext_wsclient.xml");
+        HelloWorld service = ctx.getBean("helloWorldClient", HelloWorld.class);
+        System.out.println("#############Client getUserByName##############");
+        System.out.println(service.sayHello("zhuyajun"));
+
+    }
 }

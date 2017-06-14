@@ -2285,7 +2285,7 @@ a.list-group-item.active > .badge,
 }
 .verifyImg {
     display: inline-block;
-    width: 70px;
+    width: 120px;
     height: 30px;
     vertical-align: bottom;
     cursor: pointer;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <bean id="hello" class="com.mmg.webservice.impl.HelloWroldImpl"/>
+    <bean id="inMessageInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+    <bean id="outLoggingInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+    <!--<jaxws:endpoint id="helloWorld" implementor="#hello" address="/HelloWorld"/>-->
+    <!--<jaxws:server id="helloWorldServer" serviceClass="com.mmg.webservice.HelloWorld" address="/HelloWorld">
+        <jaxws:serviceBean>
+            <ref bean="hello"/>
+        </jaxws:serviceBean>
+        <jaxws:inInterceptors>
+            <ref bean="inMessageInterceptor"/>
+        </jaxws:inInterceptors>
+        <jaxws:outInterceptors>
+            <ref bean="outLoggingInterceptor"/>
+        </jaxws:outInterceptors>
+    </jaxws:server>-->
+</beans>

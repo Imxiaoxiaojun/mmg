@@ -1,7 +1,7 @@
 package com.mmg.controller;
 
+import com.mmg.common.CountVerifyCodeTool;
 import com.mmg.common.MyException;
-import com.mmg.common.VerifyCodeUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,8 +10,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -40,7 +42,7 @@ public class CommonController {
         }  
         logger.info(ip);  
         request.getSession().setAttribute("clientIp", ip);
-        return "login.vm";
+        return "login1.vm";
     }
 
     @RequestMapping(value = "/getCaptchaId.xhtml", method = RequestMethod.GET)
@@ -49,16 +51,24 @@ public class CommonController {
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
         response.setContentType("image/jpeg");
+        try {
+            CountVerifyCodeTool tool = new CountVerifyCodeTool();
+            BufferedImage image = tool.drawVerificationCodeImage();
+            int result = tool.getXyresult();
+            request.getSession().setAttribute("verCode",result);
+            ImageIO.write(image,"PNG", response.getOutputStream());
+        }catch (IOException e){
+            logger.error(e.getMessage());
+        }
 
-
-        String verifyCode = VerifyCodeUtil.generateVerifyCode(4);
-        request.getSession().setAttribute("verCode", verifyCode.toLowerCase());
-        VerifyCodeUtil.outputImage(70, 30, response.getOutputStream(), verifyCode);
+//        String verifyCode = VerifyCodeUtil.generateVerifyCode(4);
+//        request.getSession().setAttribute("verCode", verifyCode.toLowerCase());
+//        VerifyCodeUtil.outputImage(80, 40, response.getOutputStream(), verifyCode);
     }
 
     @RequestMapping(value = "/checkCaptchaId.xhtml", method = RequestMethod.GET)
     public void checkCaptchaId(HttpServletRequest request, HttpServletResponse response, String captchaId, ModelMap model) throws MyException {
-        String sverCode = (String) request.getSession().getAttribute("verCode");
+        String sverCode = String.valueOf(request.getSession().getAttribute("verCode"));
         if (StringUtils.isBlank(captchaId) || !captchaId.toLowerCase().equals(sverCode.toLowerCase())) {
             //throw new MyException(ErrorConstants.VERCODEFAIL, "验证码错误");
         }

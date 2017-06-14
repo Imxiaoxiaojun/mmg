@@ -5,15 +5,15 @@ var login = function (val) {
     var captchaid = getElementById("captchaId");
     if (null == username || username.value.trim() == "") {
         getElementById("EEE").innerHTML = "用户名不能为空";
-        return;
+        return false;
     }
     if (null == password || "" == password.value.trim()) {
         getElementById("EEE").innerHTML = "密码不能为空";
-        return;
+        return false;
     }
     if (null == captchaid || "" == captchaid.value.trim() || captchaid.value.trim().length < 4) {
         getElementById("EEE").innerHTML = "验证码格式错误";
-        return;
+        return false;
     }
 //	getElementById("box-login").action= "admin/adminConsole.xhtml"
     var formDataUtil = new FormDataUtil();
