@@ -18,7 +18,20 @@ body {
 .page-container {
     margin: 120px auto 0 auto;
 }
-
+.boderDiv {
+	background-image: url("../img/skin-cloth.jpg");
+	background-repeat: repeat; 
+	width: 350px;
+	height:350px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius:10px;     
+	
+/* 	filter:alpha(Opacity=0.6); */
+/*     -moz-opacity:0.6; */
+/*     opacity: 0.6;  */
+    position:absolute; right:0; left:0; bottom:0; top:0; margin:auto; 
+}
 h1 {
     font-size: 30px;
     font-weight: 700;
