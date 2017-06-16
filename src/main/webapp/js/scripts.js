@@ -2,6 +2,7 @@
 jQuery(document).ready(function() {
 
     $('.page-container form').submit(function(){
+        getElementById("EEE").innerHTML = "";
         var username = $(this).find('.username').val();
         var password = $(this).find('.password').val();
         var captchaid = $(this).find('.captchaId').val();
