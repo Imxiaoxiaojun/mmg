@@ -1,0 +1,15 @@
+<div id="pageTool"></div>
+<input type="hidden" name="pagesize" id="pagesize"/>
+<input type="hidden" name="curpage" id="curpage"/>
+<script type="text/javascript" src="${rc.contextPath}/js/page/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/js/page/query.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/js/page/paging.js"></script>
+<link href="${rc.contextPath}/css/paging.css" rel="stylesheet" type="text/css" />
+<script>
+$('#pageTool').Paging({pagesize:$pageInfo.pageSize,count:$pageInfo.count,toolbar:true,callback:function(page,size,count){
+		console.log(page,size,count);
+		document.getElementById("pagesize").value=size;
+   		document.getElementById("curpage").value=page;
+   		document.forms[0].submit();
+   }});
+</script>

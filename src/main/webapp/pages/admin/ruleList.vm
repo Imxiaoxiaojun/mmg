@@ -28,12 +28,11 @@
         });
     </script>*#
 
-
 </head>
 
 
 <body>
-
+<form action = "getRuleList.xhtml" method = "get">
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
@@ -95,9 +94,9 @@
         </tr>
         </thead>
         <tbody>
-        #if($ruleList)
+        #if($pageInfo)
             #set ($i=1)
-            #foreach($rule in $ruleList)
+            #foreach($rule in $pageInfo.pageList)
                 #if($rule.ruleType == 1)
                 <tr>
                     <td><input name="ruleBox" type="checkbox" value="$!{rule.ruleId}" /></td>
@@ -121,13 +120,14 @@
         #end
         </tbody>
     </table>
-
+    <br>
+	#parse('page/page.vm') 
 </div>
 
 <script type="text/javascript">
     $('.tablelist tbody tr:odd').addClass('odd');
 </script>
 
-
+</form>
 </body>
 </html>

@@ -1,10 +1,14 @@
 package com.mmg.service;
 
-import com.mmg.entity.BaseObject;
-import com.mmg.entity.admin.*;
-
 import java.util.Collection;
 import java.util.List;
+
+import com.mmg.common.Page;
+import com.mmg.entity.BaseObject;
+import com.mmg.entity.admin.Admin;
+import com.mmg.entity.admin.QuickMenu;
+import com.mmg.entity.admin.Role;
+import com.mmg.entity.admin.Rule;
 
 /**
  * Created by yj on 2017/5/13.
@@ -21,4 +25,5 @@ public interface AdminService extends BaseService{
     <T extends BaseObject> T addObject(T entity);
     <T extends BaseObject> T removeObject(T entity);
     <T extends BaseObject> T updateObject(T entity);
+    <T extends BaseObject> List<T> getPageList(Class<T> clazz,Page<T> page);
 }

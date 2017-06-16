@@ -45,8 +45,8 @@ public class BaseServiceImpl implements BaseService{
 		return baseDao.findByCriteria(criteria);
 	}
 
-	public <T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria, int from, int maxnum) {
-		return baseDao.findByCriteria(criteria, from, maxnum);
+	public <T extends BaseObject> List<T> findByCriteria(DetachedCriteria criteria, int form, int maxnum) {
+		return baseDao.findByCriteria(criteria, form, maxnum);
 	}
 
 	public <T extends BaseObject> List<T> findByHql(String hql, Object... values) {
