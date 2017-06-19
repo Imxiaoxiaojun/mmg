@@ -28,7 +28,6 @@
 		});
 		return arr;
 	};
-
 	function Paging() {
 		var rnd = Math.random().toString().replace('.', '');
 		this.id = 'Paging_' + rnd;
@@ -37,8 +36,8 @@
 		init: function(settings) {
 			this.settings = $.extend({
 				callback: null,
-				pagesize: 10,
-				current: 1,
+				pagesize: settings.pagesize,
+				current: settings.page,
 				prevTpl: "上一页",
 				nextTpl: "下一页",
 				firstTpl: "首页",
@@ -161,11 +160,11 @@
 		},
 		bindToolbar: function() {
 			var _this = this;
-			var html = $('<li class="ui-paging-toolbar"><select class="ui-select-pagesize"></select><input type="text" class="ui-paging-count"/><a href="javascript:void(0)">跳转</a></li>');
+			var html = $('<li class="ui-paging-toolbar"><select class="ui-select-pagesize" onchange="javascript:changePageSize(1);"></select><input type="text" class="ui-paging-count"/><a href="javascript:void(0)">跳转</a></li>');
 			var sel = $('.ui-select-pagesize', html);
 			var str = '';
 			for (var i = 0, l = this.settings.pageSizeList.length; i < l; i++) {
-				str += '<option value="' + this.settings.pageSizeList[i] + '">' + this.settings.pageSizeList[i] + '条/页</option>';
+				str += '<option value="' + this.settings.pageSizeList[i] + '" >' + this.settings.pageSizeList[i] + '条/页</option>';
 			}
 			sel.html(str);
 			sel.val(this.pagesize);

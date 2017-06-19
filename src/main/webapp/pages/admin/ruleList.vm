@@ -97,7 +97,6 @@
         #if($pageInfo)
             #set ($i=1)
             #foreach($rule in $pageInfo.pageList)
-                #if($rule.ruleType == 1)
                 <tr>
                     <td><input name="ruleBox" type="checkbox" value="$!{rule.ruleId}" /></td>
                     <td>$!{i}</td>
@@ -115,7 +114,6 @@
                     </td>
                 </tr>
                 #set($i=$i+1)
-                #end
             #end
         #end
         </tbody>

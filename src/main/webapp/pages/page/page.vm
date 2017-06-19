@@ -6,8 +6,13 @@
 <script type="text/javascript" src="${rc.contextPath}/js/page/paging.js"></script>
 <link href="${rc.contextPath}/css/paging.css" rel="stylesheet" type="text/css" />
 <script>
-$('#pageTool').Paging({pagesize:$pageInfo.pageSize,count:$pageInfo.count,toolbar:true,callback:function(page,size,count){
-		console.log(page,size,count);
+    function changePageSize(curpage){
+        $("#pagesize").val($('.ui-select-pagesize option:selected').val());
+        $("#curpage").val(curpage);
+        document.forms[0].submit();
+    }
+$('#pageTool').Paging({pagesize:$pageInfo.pageSize,count:$pageInfo.count,page:$pageInfo.curPage,toolbar:true,callback:function(page,size,count){
+		console.log(page);
 		document.getElementById("pagesize").value=size;
    		document.getElementById("curpage").value=page;
    		document.forms[0].submit();

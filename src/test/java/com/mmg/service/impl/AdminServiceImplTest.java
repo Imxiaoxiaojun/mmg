@@ -1,7 +1,9 @@
 package com.mmg.service.impl;
 
-import java.util.List;
-
+import com.mmg.common.Page;
+import com.mmg.entity.admin.Rule;
+import com.mmg.service.AdminService;
+import com.mmg.util.StringUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -10,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mmg.common.Page;
-import com.mmg.entity.admin.Rule;
-import com.mmg.service.AdminService;
-import com.mmg.util.StringUtil;
+import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,9 +26,9 @@ public class AdminServiceImplTest {
 	public void assertTru() {
 		log.debug(StringUtil.getMd5Stri("123123"));
 		int count = adminService.getObjectCount(Rule.class);
-    	Page<Rule> page = new Page<>();
+    	Page<Rule> page = new Page();
     	page.setCount(count);
-    	page.setPageIndex(2);
+    	page.setCurPage(2);
     	page.setPageSize(2);
 		List<Rule> list = adminService.getPageList(Rule.class,page);
 //		List<Role> roleList = adminService.getAllRoleList(Role.class,"1");

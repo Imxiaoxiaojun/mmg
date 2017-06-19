@@ -1,18 +1,5 @@
 package com.mmg.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.mmg.common.Constants;
 import com.mmg.common.Page;
 import com.mmg.entity.admin.Admin;
@@ -20,6 +7,17 @@ import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
 import com.mmg.service.AdminService;
 import com.mmg.util.CommonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yj on 2017/5/13.
@@ -75,9 +73,9 @@ public class AdminController {
         model.put("count",150);
         model.put("pagesize",15);*/
     	int count = adminService.getObjectCount(Rule.class);
-    	Page<Rule> page = new Page<>();
+    	Page<Rule> page = new Page();
     	page.setCount(count);
-    	if(null != curpage && 0 < curpage) page.setPageIndex(curpage);
+    	if(null != curpage && 0 < curpage) page.setCurPage(curpage);
     	if(null != pagesize && 0 < pagesize) page.setPageSize(pagesize);
         List<Rule> ruleList = adminService.getPageList(Rule.class, page);
         page.setPageList(ruleList);
