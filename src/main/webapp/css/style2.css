@@ -19,7 +19,7 @@ body {
     margin: 120px auto 0 auto;
 }
 .boderDiv {
-	background-image: url("../img/skin-cloth.jpg");
+	background: url("../img/skin-cloth1.jpg");
 	background-repeat: repeat; 
 	width: 350px;
 	height:350px;
