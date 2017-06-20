@@ -32,19 +32,19 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(username != null){
             return true;
         }
-
+        
         //不符合条件的，跳转到登录界面
         response.sendRedirect ("adminLogin.xhtml");
 
         return false;
     }
 
-    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        //TODO
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object o, ModelAndView modelAndView) throws Exception {
+    	logger.info(request.getSession().getAttribute("clientIp")+"-------posthandle");
     }
 
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        //TODO
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) throws Exception {
+       logger.info(request.getSession().getAttribute("clientIp")+"---completion");
     }
 
     public void setPassUrl(List<String> passUrl) {
