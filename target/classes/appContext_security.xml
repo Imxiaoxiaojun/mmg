@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
+    <!--<context:annotation-config/>-->
+<!--    <bean id="securityFilter" class="org.springframework.security.web.FilterChainProxy">
+        <constructor-arg>
+            <sec:filter-chain request-matcher-ref="filterMatcher" filters="authenticationFilter"/>
+        </constructor-arg>
+    </bean>
+    <bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="authenticationSuccessHandler" ref="successHandler" />
+        &lt;!&ndash;<property name="authenticationFailureHandler" ref="failureHandler" />&ndash;&gt;
+        <property name="filterProcessesUrl" value="/admin/checkUser.xhtml" />
+    </bean>-->
+<!--    <bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <property name="defaultTargetUrl" value="/index.xhtml" />
+        <property name="targetUrlParameter" value="TARGETURL" />
+        &lt;!&ndash;<property name="redirectStrategy" ref="redirectStrategy" />&ndash;&gt;
+    </bean>
+    <bean id="failureHandler" class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+        <property name="defaultFailureUrl" value="/login.xhtml" />
+    </bean>-->
+
+   <!-- <bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+        <property name="providers">
+            <list>
+                <ref bean="daoAuthenticationProvider" />
+                <ref bean="rememberMeAuthenticationProvider" />
+            </list>
+        </property>
+        <property name="authenticationEventPublisher" ref="authenticationEventPublisher"/>
+    </bean>-->
+</beans>

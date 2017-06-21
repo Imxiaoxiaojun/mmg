@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>分类</title>
+    <link type="text/css"  href="${rc.contextPath}/css/styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="${rc.contextPath}/js/jquery.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/js/common/common.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="${rc.contextPath}/admin/getIndex.xhtml">首页</a></li>
+        <li><a href="${rc.contextPath}/admin/getRoleList.xhtml">角色列表</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+
+    <div class="tools">
+
+        <ul class="toolbar">
+            <li class="click"><span><img src="${rc.contextPath}/image/t01.png" /></span><a href="type_add.jsp">添加</a></li>
+            <li class="click"><span><img src="${rc.contextPath}/image/t02.png" /></span><a href="type_add.jsp">修改</a></li>
+            <li><span><img src="${rc.contextPath}/image/t03.png" /></span><a href="type_add.jsp">删除</a></li>
+        </ul>
+
+        <ul class="toolbar1">
+            <li><span><img src="${rc.contextPath}/image/t05.png" /></span><a href="type_add.jsp">设置</a></li>
+        </ul>
+
+    </div>
+
+
+    <div class="tip">
+        <div class="tiptop"><span>提示信息</span><a></a></div>
+
+        <div class="tipinfo">
+            <span><img src="${rc.contextPath}/image/ticon.png" /></span>
+            <div class="tipright">
+                <p>是否确认对信息的修改 ？</p>
+                <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+            </div>
+        </div>
+
+        <div class="tipbtn">
+            <input name="" type="button"  class="sure" value="确定" />&nbsp;
+            <input name="" type="button"  class="cancel" value="取消" />
+        </div>
+
+    </div>
+
+
+    <table class="tablelist">
+        <thead>
+        <tr>
+            <th><input id="checkAll" type="checkbox" value="" onclick="checkAll('roleBox')"/></th>
+            <th>编号</th>
+            <th>角色id</th>
+            <th>角色名称</th>
+            <th>创建时间</th>
+            <th>最后修改时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #if($roleList)
+                #set ($i=1)
+                #foreach($role in $roleList)
+                    #if($role.roleType == 1)
+                    <tr>
+                        <td><input name="roleBox" type="checkbox" value="$!{role.roleId}" /></td>
+                        <td>$!{i}</td>
+                        <td>$!{role.roleId}</td>
+                        <td>$!{role.roleName}</td>
+                        <td>$!{role.createTime}</td>
+                        <td>$!{role.lastUpdateTime}</td>
+                        <td>
+                            <a href="type_findById.action?typeId=${typeId}">查看</a>&emsp;&emsp;
+                            <a href="type_delete.action?typeId=${typeId}">删除</a>
+                        </td>
+                    </tr>
+                        #set($i=$i+1)
+                    #end
+                #end
+            #end
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+
+
+</body>
+</html>
