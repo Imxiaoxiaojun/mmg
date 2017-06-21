@@ -40,7 +40,7 @@ public class CommonController {
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
             ip = request.getRemoteAddr();  
         }  
-        ip = ip.equals("0:0:0:0:0:0:0:1")?"101.95.157.134":ip;
+        ip = ip.equals("0:0:0:0:0:0:0:1")||ip.equals("127.0.0.1")?"101.95.157.134":ip;
         logger.info(ip);  
         request.getSession().setAttribute("clientIp", ip);
         return "login1.vm";
