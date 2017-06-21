@@ -1,5 +1,6 @@
 package com.mmg.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -20,10 +21,12 @@ import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
 import com.mmg.entity.common.IpAddress;
 import com.mmg.entity.common.Weather;
+import com.mmg.entity.common.Weather24H;
 import com.mmg.service.AdminService;
 import com.mmg.service.IpService;
 import com.mmg.service.WeatherService;
 import com.mmg.util.CommonUtil;
+import com.mmg.util.DateUtil;
 import com.mmg.util.JsonUtil;
 
 /**
@@ -42,12 +45,9 @@ public class AdminController {
 	@Qualifier("ipService")
 	private IpService ipService;
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "adminConsole.xhtml")
 	public String getMain(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-		// String path = request.getContextPath();
-		// String basePath = request.getScheme() + "://" +
-		// request.getServerName() + ":" + request.getServerPort() + path + "/";
-		// model.put("basePath", basePath);
 		String ip = (String) request.getSession().getAttribute("clientIp");
 		IpAddress ipAddress = ipService.queryLocalByIp(ip);
 		String area = "";
@@ -55,20 +55,25 @@ public class AdminController {
 			area = ipAddress.getRegion();
 		}
 		Weather weather = weatherService.get24HourInfo(area);
-		String temperature = "";
-		Weather  weather24 ;
-		if (weather != null)
-			weather24 = weather.getHourList().get(0);
-
-		model.put("temperature", temperature);
-		model.put("userName", request.getSession().getAttribute("userName"));
-
+		Map<String,Object> map = (Map<String, Object>) weather.getHourList().get(0);
+		Weather24H weather24 = new Weather24H();
+		
+		if (weather != null){
+			CommonUtil.mapToBean(map,weather24);
+		}
+		String weatherTime = weather24.getTime();
+		if(DateUtil.isDay(weatherTime.substring(weatherTime.length()-4, weatherTime.length()))){
+			request.getSession().setAttribute("dayCode", weather24.getWeather_code());
+		}else{
+			request.getSession().setAttribute("nightCode", weather24.getWeather_code());
+		}
+		request.getSession().setAttribute("weather", weather24);
 		return "admin/main.vm";
 	}
 
 	@RequestMapping(value = "admin/getTop.xhtml", method = RequestMethod.GET)
 	public String getTop(HttpServletRequest request, ModelMap model) {
-
+		model.put("userName", request.getSession().getAttribute("userName"));
 		return "admin/top.vm";
 	}
 
@@ -86,7 +91,14 @@ public class AdminController {
 	@RequestMapping(value = "admin/getIndex.xhtml", method = RequestMethod.GET)
 	public String getIndex(HttpServletRequest request, ModelMap model) {
 		Admin admin = adminService.getAdminInfo((String) request.getSession().getAttribute("userName"));
+		model.put("dayCode", request.getSession().getAttribute("dayCode"));
+		model.put("nightCode", request.getSession().getAttribute("nightCode"));
+		model.put("weather", request.getSession().getAttribute("weather"));
 		model.put("adminInfo", admin);
+		
+		model.put("lastLoginTime",request.getSession().getAttribute("lastLoginTime"));
+		model.put("lastLoginIp",request.getSession().getAttribute("lastLoginIp"));
+		model.put("lastLoginLocale",ipService.queryLocalByIp((String)request.getSession().getAttribute("lastLoginIp")).getRegion());
 		return "admin/index.vm";
 	}
 

@@ -22,14 +22,14 @@
     
     
     <div class="welinfo">
-    <span><img src="${rc.contextPath}/image/sun.png" alt="天气" /></span>
-    <b>$!{adminInfo.adminName}，早上好，欢迎使用信息管理系统</b>
+    <span><img src="http://app1.showapi.com/weather/icon/day/${dayCode}.png" alt="天气" width="30px;"/></span>
+    <b>欢迎使用信息管理系统,当前天气：${weather.weather},${weather.temperature}摄氏度</b>
     <a href="#">帐号设置</a>
     </div>
     
     <div class="welinfo">
     <span><img src="${rc.contextPath}/image/time.png" alt="时间" /></span>
-    <i>您上次登录的时间：$!{adminInfo.lastLoginTime}</i> （不是您登录的？<a href="#">请点这里</a>）
+    <i>您上次登录的时间：$!{lastLoginTime}，地址：$!{lastLoginIp},$!{lastLoginLocale}</i> （不是您登录的？<a href="#">请点这里</a>）
     </div>
     
     <div class="xline"></div>

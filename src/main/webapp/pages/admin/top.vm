@@ -8,21 +8,18 @@
 
 <body style="background:url(${rc.contextPath}/image/topbg.gif) repeat-x;">
 <div class="topleft">
-    <a href="main.html" target="_parent"><img src="${rc.contextPath}/image/logo1.png" title="系统首页" /></a>
+    <a href="getIndex.xhtml" target="rightFrame"><img src="${rc.contextPath}/image/logo1.png" title="系统首页" /></a>
 </div>
-
 <div class="topright">
     <ul>
         <li><span><img src="${rc.contextPath}/image/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
         <li><a href="#">关于</a></li>
         <li><a href="admin_logout.xhtml" target="_parent">退出</a></li>
     </ul>
-
     <div class="user">
         <span>$!{userName}</span>
         <i>你好</i>
     </div>
-
 </div>
 </body>
 </html>
