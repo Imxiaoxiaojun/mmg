@@ -21,6 +21,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.mmg.entity.admin.Rule;
 
+
 /**
  * Created by yj on 2017/5/13.
  */
@@ -222,7 +223,7 @@ public class CommonUtil {
       }
 
     public static void main(String[] args) {      
-        System.out.println(getMacAddress("220.181.111.148"));
+        System.out.println(getMacAddress("101.95.157.134"));
       }
 
 }

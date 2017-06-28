@@ -1,4 +1,4 @@
-package com.mmg.service.impl;
+package com.mmg.service.mmg.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.mmg.common.HttpUtils;
 import com.mmg.entity.common.Weather;
-import com.mmg.service.WeatherService;
+import com.mmg.service.mmg.WeatherService;
 import com.mmg.util.CommonUtil;
 import com.mmg.util.JsonUtil;
 

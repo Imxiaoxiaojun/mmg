@@ -1,4 +1,4 @@
-package com.mmg.service;
+package com.mmg.service.mmg;
 
 import com.mmg.entity.common.Weather;
 

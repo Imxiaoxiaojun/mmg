@@ -23,6 +23,7 @@ import com.mmg.entity.admin.Role_Rule;
 import com.mmg.entity.admin.Rule;
 import com.mmg.entity.admin.User_Role;
 import com.mmg.service.AdminService;
+import com.mmg.service.mmg.impl.BaseServiceImpl;
 
 /**
  * Created by yj on 2017/5/6.

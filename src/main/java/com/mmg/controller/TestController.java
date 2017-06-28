@@ -1,6 +1,6 @@
 package com.mmg.controller;
 
-import com.mmg.service.BaseService;
+import com.mmg.service.mmg.BaseService;
 import com.mmg.webservice.HelloWorld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

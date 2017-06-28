@@ -1,4 +1,4 @@
-package com.mmg.service.impl;
+package com.mmg.service.mmg.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.mmg.common.HttpUtils;
 import com.mmg.entity.common.IpAddress;
-import com.mmg.service.IpService;
+import com.mmg.service.mmg.IpService;
 import com.mmg.util.JsonUtil;
 
 @Service("ipService")

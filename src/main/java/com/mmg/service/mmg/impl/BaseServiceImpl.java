@@ -1,8 +1,9 @@
-package com.mmg.service.impl;
+package com.mmg.service.mmg.impl;
 
 import com.mmg.dao.BaseDao;
 import com.mmg.entity.BaseObject;
-import com.mmg.service.BaseService;
+import com.mmg.service.mmg.BaseService;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

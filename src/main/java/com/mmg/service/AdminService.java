@@ -9,6 +9,7 @@ import com.mmg.entity.admin.Admin;
 import com.mmg.entity.admin.QuickMenu;
 import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
+import com.mmg.service.mmg.BaseService;
 
 /**
  * Created by yj on 2017/5/13.
