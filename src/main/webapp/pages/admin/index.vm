@@ -14,20 +14,24 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="getIndex.xhtml" target="rightFrame">首页</a></li>
+        <li><a href="getIndex.hel" target="rightFrame">首页</a></li>
     </ul>
 </div>
 
 <div class="mainindex">
     <div class="welinfo">
+        #set($dayFlag = "day")
+        #set($Code = "timg")
         #if($dayCode)
             #set($Code = $dayCode)
+            #set($dayFlag  = "day")
         #end
         #if($nightCode)
             #set($Code = $nightCode)
+            #set($dayFlag  = "night")
         #end
-        <span><img src="http://app1.showapi.com/weather/icon/day/${Code}.png" alt="天气" width="35px;"/></span>
-        <b>欢迎使用信息管理系统,当前天气：${weather.weather},${weather.temperature}摄氏度</b>
+        <span><img src="${rc.contextPath}/img/icon/${dayFlag}/${Code}.png" alt="天气" width="35px;"/></span>
+        <b>欢迎使用信息管理系统,当前天气：$!{weather.weather},$!{weather.temperature}摄氏度</b>
         <a href="#">帐号设置</a>
     </div>
 

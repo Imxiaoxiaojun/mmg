@@ -15,8 +15,8 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="${rc.contextPath}/admin/getIndex.xhtml">首页</a></li>
-        <li><a href="${rc.contextPath}/admin/getRoleList.xhtml">角色列表</a></li>
+        <li><a href="${rc.contextPath}/admin/getIndex.hel">首页</a></li>
+        <li><a href="${rc.contextPath}/admin/getRoleList.hel">角色列表</a></li>
     </ul>
 </div>
 

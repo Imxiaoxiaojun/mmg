@@ -27,10 +27,10 @@ public class CommonController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String toLogin() throws MyException {
-        return "redirect:/adminLogin.xhtml";
+        return "redirect:/adminLogin.hel";
     }
 
-    @RequestMapping(value = "/adminLogin.xhtml", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminLogin.hel", method = RequestMethod.GET)
     public String gotoLogin(HttpServletRequest request, ModelMap model) throws MyException {
     	String clientIp = CommonUtil.getIp(request);
     	String macAddress = CommonUtil.getClientMac(clientIp);
@@ -39,7 +39,7 @@ public class CommonController {
         return "login1.vm";
     }
 
-    @RequestMapping(value = "/getCaptchaId.xhtml", method = RequestMethod.GET)
+    @RequestMapping(value = "/getCaptchaId.hel", method = RequestMethod.GET)
     public void getCaptchaId(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Pragma", "no-cache");
@@ -61,7 +61,7 @@ public class CommonController {
 //        VerifyCodeUtil.outputImage(80, 40, response.getOutputStream(), verifyCode);
     }
 
-    @RequestMapping(value = "/checkCaptchaId.xhtml", method = RequestMethod.GET)
+    @RequestMapping(value = "/checkCaptchaId.hel", method = RequestMethod.GET)
     public void checkCaptchaId(HttpServletRequest request, HttpServletResponse response, String captchaId, ModelMap model) throws MyException {
         String sverCode = String.valueOf(request.getSession().getAttribute("verCode"));
         if (StringUtils.isBlank(captchaId) || !captchaId.toLowerCase().equals(sverCode.toLowerCase())) {

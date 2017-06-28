@@ -9,10 +9,10 @@
 ##    <script language="JavaScript" src="${rc.contextPath}/js/common/common.js"/>
 </head>
 <frameset rows="88,*" cols="*" frameborder="no" border="0" framespacing="0">
-    <frame src="${rc.contextPath}/admin/getTop.xhtml" name="topFrame" scrolling="no" noresize="noresize" id="topFrame" title="topFrame" />
+    <frame src="${rc.contextPath}/admin/getTop.hel" name="topFrame" scrolling="no" noresize="noresize" id="topFrame" title="topFrame" />
     <frameset cols="187,*" frameborder="no" border="0" framespacing="0">
-        <frame src="${rc.contextPath}/admin/getLeft.xhtml" name="leftFrame" scrolling="no" noresize="noresize" id="leftFrame" title="leftFrame" />
-        <frame src="${rc.contextPath}/admin/getIndex.xhtml" name="rightFrame" id="rightFrame" title="rightFrame" />
+        <frame src="${rc.contextPath}/admin/getLeft.hel" name="leftFrame" scrolling="no" noresize="noresize" id="leftFrame" title="leftFrame" />
+        <frame src="${rc.contextPath}/admin/getIndex.hel" name="rightFrame" id="rightFrame" title="rightFrame" />
     </frameset>
 </frameset>
 <noframes><body>

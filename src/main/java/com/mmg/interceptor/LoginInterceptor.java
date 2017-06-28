@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         
         //不符合条件的，跳转到登录界面
-        response.sendRedirect ("adminLogin.xhtml");
+        response.sendRedirect ("adminLogin.hel");
 
         return false;
     }

@@ -1,19 +1,5 @@
 package com.mmg.controller;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.mmg.common.Constants;
 import com.mmg.common.Page;
 import com.mmg.entity.admin.Admin;
@@ -27,7 +13,17 @@ import com.mmg.service.mmg.IpService;
 import com.mmg.service.mmg.WeatherService;
 import com.mmg.util.CommonUtil;
 import com.mmg.util.DateUtil;
-import com.mmg.util.JsonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yj on 2017/5/13.
@@ -46,22 +42,25 @@ public class AdminController {
 	private IpService ipService;
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "adminConsole.xhtml")
+	@RequestMapping(value = "adminConsole.hel")
 	public String getMain(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		String ip = (String) request.getSession().getAttribute("clientIp");
 		IpAddress ipAddress = ipService.queryLocalByIp(ip);
+
 		String area = "";
 		if (null != ipAddress) {
 			area = ipAddress.getRegion();
 		}
 		Weather weather = weatherService.get24HourInfo(area);
+
+		if (weather == null||weather.getHourList()==null|| weather.getHourList().size()<=0) return "admin/main.vm";
+
 		Map<String,Object> map = (Map<String, Object>) weather.getHourList().get(0);
 		Weather24H weather24 = new Weather24H();
-		
-		if (weather != null){
-			CommonUtil.mapToBean(map,weather24);
-		}
+		CommonUtil.mapToBean(map,weather24);
 		String weatherTime = weather24.getTime();
+
+		if(weatherTime == null)return "admin/main.vm";
 		if(DateUtil.isDay(weatherTime.substring(weatherTime.length()-4, weatherTime.length()))){
 			request.getSession().setAttribute("dayCode", weather24.getWeather_code());
 		}else{
@@ -71,13 +70,13 @@ public class AdminController {
 		return "admin/main.vm";
 	}
 
-	@RequestMapping(value = "admin/getTop.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getTop.hel", method = RequestMethod.GET)
 	public String getTop(HttpServletRequest request, ModelMap model) {
 		model.put("userName", request.getSession().getAttribute("userName"));
 		return "admin/top.vm";
 	}
 
-	@RequestMapping(value = "admin/getLeft.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getLeft.hel", method = RequestMethod.GET)
 	public String getLeft(HttpServletRequest request, ModelMap model) {
 		Admin admin = adminService.getAdminInfo((String) request.getSession().getAttribute("userName"));
 		List<Role> roleList = adminService.getRoleList(admin.getId());
@@ -88,7 +87,7 @@ public class AdminController {
 		return "admin/left.vm";
 	}
 
-	@RequestMapping(value = "admin/getIndex.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getIndex.hel", method = RequestMethod.GET)
 	public String getIndex(HttpServletRequest request, ModelMap model) {
 		Admin admin = adminService.getAdminInfo((String) request.getSession().getAttribute("userName"));
 		model.put("dayCode", request.getSession().getAttribute("dayCode"));
@@ -102,13 +101,13 @@ public class AdminController {
 		return "admin/index.vm";
 	}
 
-	@RequestMapping(value = "admin/admin_logout.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/admin_logout.hel", method = RequestMethod.GET)
 	public String adminLogout(HttpServletRequest request, ModelMap model) {
 		request.getSession().removeAttribute(Constants.USERNAME);
-		return "redirect:/adminLogin.xhtml";
+		return "redirect:/adminLogin.hel";
 	}
 
-	@RequestMapping(value = "admin/getRuleList.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getRuleList.hel", method = RequestMethod.GET)
 	public String getRuleList(HttpServletRequest request, Integer curpage, Integer pagesize, ModelMap model) {
 		// List<Rule> ruleList = adminService.getAllRuleList(Rule.class);
 		/*
@@ -128,21 +127,21 @@ public class AdminController {
 		return "/admin/ruleList.vm";
 	}
 
-	@RequestMapping(value = "admin/getRoleList.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getRoleList.hel", method = RequestMethod.GET)
 	public String getRoleList(HttpServletRequest request, ModelMap model) {
 		List<Role> roleList = adminService.getAllRoleList(Role.class);
 		model.put("roleList", roleList);
 		return "/admin/roleList.vm";
 	}
 
-	@RequestMapping(value = "admin/getAdminList.xhtml", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/getAdminList.hel", method = RequestMethod.GET)
 	public String getAdminList(HttpServletRequest request, ModelMap model) {
 		List<Admin> adminList = adminService.getAllAdminList(Admin.class);
 		model.put("adminList", adminList);
 		return "/admin/adminList.vm";
 	}
 
-	@RequestMapping(value = "admin/updateAdmin.xhtml")
+	@RequestMapping(value = "admin/updateAdmin.hel")
 	public String updateAdmin(HttpServletRequest request, ModelMap model, String adminId) {
 
 		return "/admin/updateAdmin.vm";

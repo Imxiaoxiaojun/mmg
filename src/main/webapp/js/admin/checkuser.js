@@ -15,17 +15,17 @@ var login = function (val) {
         getElementById("EEE").innerHTML = "验证码格式错误";
         return false;
     }
-//	getElementById("box-login").action= "admin/adminConsole.xhtml"
+//	getElementById("box-login").action= "admin/adminConsole.hel"
     var formDataUtil = new FormDataUtil();
     formDataUtil.put("userName", username.value);
     formDataUtil.put("passWord", password.value);
     formDataUtil.put("captchaId", captchaid.value);
     formDataUtil.put(1, captchaid.value);
-    document.forms[0].action = "checkUser.xhtml";
+    document.forms[0].action = "checkUser.hel";
 
-    // $.post("admin/adminConsole.xhtml",formDataUtil.getajaxdata(),null);
+    // $.post("admin/adminConsole.hel",formDataUtil.getajaxdata(),null);
 
-    _ajax("checkCaptchaId.xhtml", "get", formDataUtil.getajaxdata(), function (data) {
+    _ajax("checkCaptchaId.hel", "get", formDataUtil.getajaxdata(), function (data) {
         document.forms[0].submit();
     }, function (data) {
         getElementById("EEE").innerHTML = strtojson(data.responseText).errMsg;

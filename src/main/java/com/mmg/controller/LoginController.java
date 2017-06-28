@@ -6,7 +6,6 @@ import com.mmg.entity.admin.Admin;
 import com.mmg.entity.common.DBLogger;
 import com.mmg.service.AdminService;
 import com.mmg.service.mmg.DBLoggerService;
-import com.mmg.util.CommonUtil;
 import com.mmg.util.DateUtil;
 import com.mmg.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
@@ -18,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 
 /**
  * Created by yj on 2017/5/6.
@@ -34,9 +32,9 @@ public class LoginController {
     @Qualifier("dBLoggerService")
     private DBLoggerService dBLoggerService;
     
-    @RequestMapping(value = "/checkUser.xhtml", method = RequestMethod.POST)
+    @RequestMapping(value = "/checkUser.hel", method = RequestMethod.POST)
     public String login(HttpServletRequest request, String userName, String passWord, String captchaId) throws MyException {
-        if(null == request.getSession().getAttribute("verCodeCheck")) return "redirect:/adminLogin.xhtml";
+        if(null == request.getSession().getAttribute("verCodeCheck")) return "redirect:/adminLogin.hel";
         boolean verCodeCheck = ((Boolean) (request.getSession().getAttribute("verCodeCheck")));
         String epassWord = StringUtil.getMd5Stri(passWord);
         String clientIp = (String)request.getSession().getAttribute("clientIp");
@@ -67,7 +65,7 @@ public class LoginController {
         admin.setLastUpdateTime(new Timestamp(System.currentTimeMillis()));
         adminService.updateObject(admin);
         request.getSession().setAttribute("userName",userName);
-        return "redirect:adminConsole.xhtml";
+        return "redirect:adminConsole.hel";
         
     }
 }

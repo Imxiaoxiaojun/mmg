@@ -1,6 +1,5 @@
 package com.mmg.common;
 
-import com.mmg.entity.common.DBLogger;
 import com.mmg.service.mmg.DBLoggerService;
 import com.mmg.util.JsonUtil;
 import org.apache.commons.logging.Log;
@@ -36,11 +35,11 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
         if (e instanceof MyException) {
             myException = (MyException) e;
 //            if (myException.getCode().equals(ErrorConstants.LOGINFAIL) || myException.getCode().equals(ErrorConstants.LOGINNULL)) {
-            if(request.getRequestURI().equals("checkUser.xhtml")){
+            if(request.getRequestURI().equals("checkUser.hel")){
                 FlashMap flashmap = RequestContextUtils.getOutputFlashMap(request);
                 flashmap.put("errorMsg", myException.getMsg());
 //                flashmap.put("errorMsg","9");
-                return new ModelAndView("redirect:/adminLogin.xhtml");
+                return new ModelAndView("redirect:/adminLogin.hel");
             }
         } else {
         	logger.error("系统错误"+e);

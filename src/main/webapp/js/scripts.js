@@ -38,10 +38,10 @@ jQuery(document).ready(function() {
         formDataUtil.put("userName", username);
         formDataUtil.put("passWord", password);
         formDataUtil.put("captchaId", captchaid);
-        document.forms[0].action = "checkUser.xhtml";
+        document.forms[0].action = "checkUser.hel";
 
 
-        _ajax("checkCaptchaId.xhtml", "get", formDataUtil.getajaxdata(), function (data) {
+        _ajax("checkCaptchaId.hel", "get", formDataUtil.getajaxdata(), function (data) {
             document.forms[0].submit();
         }, function (data) {
             getElementById("EEE").innerHTML = strtojson(data.responseText).errMsg;

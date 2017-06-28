@@ -10,12 +10,12 @@ var updateAdmin = function (val) {
         getElementById("EEE").innerHTML = "只能修改单个用户";
         return;
     }
-    $("#form").action = "admin/updateAdmin.xhtml";
+    $("#form").action = "admin/updateAdmin.hel";
     $("#adminId").val(adminId);
     $("#form").submit();
 }
 
 var addAdmin = function () {
-    $("#form1").attr("action","updateAdmin.xhtml");
+    $("#form1").attr("action","updateAdmin.hel");
     $("#form1").submit();
 }
