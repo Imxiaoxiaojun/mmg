@@ -4,15 +4,24 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -133,97 +142,91 @@ public class CommonUtil {
         }
         return filedList;
     }
-    public static String callCmd(String[] cmd) { 
-        String result = ""; 
-        String line = ""; 
-        try { 
-          Process proc = Runtime.getRuntime().exec(cmd); 
-          InputStreamReader is = new InputStreamReader(proc.getInputStream()); 
-          BufferedReader br = new BufferedReader (is); 
-          while ((line = br.readLine ()) != null) { 
-          result += line; 
-          } 
+ 
+    public static String getIp(HttpServletRequest request){
+    	String ip = request.getHeader("x-forwarded-for");  
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("Proxy-Client-IP");  
         } 
-        catch(Exception e) { 
-          e.printStackTrace(); 
-        } 
-        return result; 
-      }
-    public static String callCmd(String[] cmd,String[] another) { 
-        String result = ""; 
-        String line = ""; 
-        try { 
-          Runtime rt = Runtime.getRuntime(); 
-          Process proc = rt.exec(cmd); 
-          proc.waitFor(); //已经执行完第一个命令，准备执行第二个命令 
-          proc = rt.exec(another); 
-          InputStreamReader is = new InputStreamReader(proc.getInputStream()); 
-          BufferedReader br = new BufferedReader (is); 
-          while ((line = br.readLine ()) != null) { 
-            result += line; 
-          } 
-        } 
-        catch(Exception e) { 
-          e.printStackTrace(); 
-        } 
-        return result; 
-      }
-    public static String filterMacAddress(final String ip, final String sourceString,final String macSeparator) { 
-        String result = ""; 
-        String regExp = "((([0-9,A-F,a-f]{1,2}" + macSeparator + "){1,5})[0-9,A-F,a-f]{1,2})"; 
-        Pattern pattern = Pattern.compile(regExp); 
-        Matcher matcher = pattern.matcher(sourceString); 
-        while(matcher.find()){ 
-          result = matcher.group(1); 
-          if(sourceString.indexOf(ip) <= sourceString.lastIndexOf(matcher.group(1))) { 
-            break; //如果有多个IP,只匹配本IP对应的Mac. 
-          } 
-        }
-      
-        return result; 
-      }
-    public static String getMacInWindows(final String ip){ 
-        String result = ""; 
-        String[] cmd = { 
-            "cmd", 
-            "/c", 
-            "ping " + ip 
-            }; 
-        String[] another = { 
-            "cmd", 
-            "/c", 
-            "arp -a"
-            }; 
-      
-        String cmdResult = callCmd(cmd,another); 
-        result = filterMacAddress(ip,cmdResult,"-"); 
-      
-        return result; 
-      } 
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("WL-Proxy-Client-IP");  
+        }  
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getRemoteAddr();  
+        }  
+//        ip = ip.equals("0:0:0:0:0:0:0:1")||ip.equals("127.0.0.1")?"101.95.157.134":ip;
+        return ip;
+    }
     
-    public static String getMacInLinux(final String ip){ 
-        String result = ""; 
-        String[] cmd = { 
-            "/bin/sh", 
-            "-c", 
-            "ping " + ip + " -c 2 && arp -a"
-            }; 
-        String cmdResult = callCmd(cmd); 
-        result = filterMacAddress(ip,cmdResult,":"); 
-      
-        return result; 
-      } 
-    public static String getMacAddress(String ip){
-        String macAddress = "";
-        macAddress = getMacInWindows(ip).trim();
-        if(macAddress==null||"".equals(macAddress)){
-          macAddress = getMacInLinux(ip).trim();
+    public static String getMACAddress() {
+        String mac = null;
+        try {
+        	Process pro = Runtime.getRuntime().exec("cmd.exe /c ipconfig/all");
+ 
+            InputStream is = pro.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is,"GBK"));
+            String message = br.readLine();
+ 
+            int index = -1;
+            while (message != null) {
+                if ((index = message.indexOf("Physical Address")) > 0||message.indexOf("物理地址") > 0) {
+                    mac = message.substring(index + 36).trim();
+                    break;
+                }
+                message = br.readLine();
+            }
+            br.close();
+            pro.destroy();
+        } catch (IOException e) {
+            System.out.println("Can't get mac address!");
+            return null;
         }
-        return macAddress;
-      }
+        return mac;
+    }
 
+	public static String getClientMac(String ipAddress){
+		// TODO Auto-generated method stub
+		String macAddress = "";
+		final String LOOPBACK_ADDRESS1 = "127.0.0.1";
+		final String LOOPBACK_ADDRESS2 = "0:0:0:0:0:0:0:1";
+		// 如果为127.0.0.1,则获取本地MAC地址。
+		if (LOOPBACK_ADDRESS1.equals(ipAddress)||LOOPBACK_ADDRESS2.equals(ipAddress)) {
+			InetAddress inetAddress;
+			byte[] mac;
+			try {
+				inetAddress = InetAddress.getLocalHost();
+				mac = NetworkInterface.getByInetAddress(inetAddress).getHardwareAddress();
+				// 貌似此方法需要JDK1.6。
+				// 下面代码是把mac地址拼装成String
+				StringBuilder sb = new StringBuilder();
+				for (int i = 0; i < mac.length; i++) {
+					if (i != 0) {
+						sb.append("-");
+					}
+					// mac[i] & 0xFF 是为了把byte转化为正整数
+					String s = Integer.toHexString(mac[i] & 0xFF);
+					sb.append(s.length() == 1 ? 0 + s : s);
+				}
+				macAddress = sb.toString().trim().toUpperCase();
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			} catch (SocketException e) {
+				e.printStackTrace();
+			}
+			
+			// 把字符串所有小写字母改为大写成为正规的mac地址并返回
+		} else{
+			macAddress = getMACAddress();
+		}
+		return macAddress;
+	}
+
+    public static String getTransId(HttpServletRequest request){
+    	String url = request.getRequestURI();
+    	return url;
+    }
     public static void main(String[] args) {      
-        System.out.println(getMacAddress("101.95.157.134"));
+        System.out.println(getClientMac("192.168.12.139"));
       }
 
 }

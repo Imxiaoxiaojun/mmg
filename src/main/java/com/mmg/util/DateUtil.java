@@ -1,5 +1,6 @@
 package com.mmg.util;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,5 +42,8 @@ public class DateUtil {
 		}
 
 		return false;
+	}
+	public static Timestamp getFullTime(){
+		return new Timestamp(System.currentTimeMillis());
 	}
 }

@@ -16,7 +16,6 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -46,6 +45,4 @@
 <script src="${rc.contextPath}/js/scripts.js"></script>
 ##<script src="${rc.contextPath}/js/admin/checkuser.js"></script>
 </body>
-
 </html>
-

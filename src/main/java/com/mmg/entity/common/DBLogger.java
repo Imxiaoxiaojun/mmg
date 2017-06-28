@@ -23,12 +23,26 @@ public class DBLogger extends BaseObject{
     private String macAddress;
     @Column(name = "operationTime", length = 30,  nullable = false)
     private Timestamp operationTime;
-    @Column(name = "description", length = 50,  nullable = false)
+    @Column(name = "description", length = 50)
     private String description;
-    @Column(name = "content", length = 100,  nullable = false)
+    @Column(name = "content", length = 100)
     private String content;
+    
+    
 
-    @Override
+
+	public DBLogger(String operationuser, String ipAddress, String macAddress,Timestamp operationTime,String description) {
+		this.operationuser = operationuser;
+		this.ipAddress = ipAddress;
+		this.macAddress = macAddress;
+		this.operationTime = operationTime;
+		this.description = description;
+		this.content = "success";
+	}
+
+
+
+	@Override
     public Serializable realId() {
         return id;
     }
@@ -81,11 +95,12 @@ public class DBLogger extends BaseObject{
         this.description = description;
     }
 
-    public String getContent() {
-        return this.content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 }

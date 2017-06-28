@@ -1,8 +1,12 @@
 package com.mmg.common;
 
+import com.mmg.entity.common.DBLogger;
+import com.mmg.service.mmg.DBLoggerService;
 import com.mmg.util.JsonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,14 +23,20 @@ import java.util.Map;
 public class MyExceptionResolver implements HandlerExceptionResolver {
     private String viewName;
     private Log logger = LogFactory.getLog(this.getClass());
+    @Autowired
+    @Qualifier("dBLoggerService")
+    private DBLoggerService dBLoggerService;
 
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) {
         MyException myException = null;
-
+        String clientIp = (String)request.getSession().getAttribute("clientIp");
+        String clientMac = (String)request.getSession().getAttribute("clientMac");
+        
         //如果抛出的是系统自定义的异常则直接转换
         if (e instanceof MyException) {
             myException = (MyException) e;
-            if (myException.getCode().equals(ErrorConstants.LOGINFAIL) || myException.getCode().equals(ErrorConstants.LOGINNULL)) {
+//            if (myException.getCode().equals(ErrorConstants.LOGINFAIL) || myException.getCode().equals(ErrorConstants.LOGINNULL)) {
+            if(request.getRequestURI().equals("checkUser.xhtml")){
                 FlashMap flashmap = RequestContextUtils.getOutputFlashMap(request);
                 flashmap.put("errorMsg", myException.getMsg());
 //                flashmap.put("errorMsg","9");

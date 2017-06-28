@@ -2,6 +2,8 @@ package com.mmg.controller;
 
 import com.mmg.common.CountVerifyCodeTool;
 import com.mmg.common.MyException;
+import com.mmg.util.CommonUtil;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,19 +32,10 @@ public class CommonController {
 
     @RequestMapping(value = "/adminLogin.xhtml", method = RequestMethod.GET)
     public String gotoLogin(HttpServletRequest request, ModelMap model) throws MyException {
-    	String ip = request.getHeader("x-forwarded-for");  
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
-            ip = request.getHeader("Proxy-Client-IP");  
-        } 
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
-            ip = request.getHeader("WL-Proxy-Client-IP");  
-        }  
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
-            ip = request.getRemoteAddr();  
-        }  
-        ip = ip.equals("0:0:0:0:0:0:0:1")||ip.equals("127.0.0.1")?"101.95.157.134":ip;
-        logger.info(ip);  
-        request.getSession().setAttribute("clientIp", ip);
+    	String clientIp = CommonUtil.getIp(request);
+    	String macAddress = CommonUtil.getClientMac(clientIp);
+        request.getSession().setAttribute("clientIp", clientIp);
+        request.getSession().setAttribute("clientMac", macAddress);
         return "login1.vm";
     }
 
