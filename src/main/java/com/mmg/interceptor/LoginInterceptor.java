@@ -34,17 +34,17 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         
         //不符合条件的，跳转到登录界面
-        response.sendRedirect ("adminLogin.hel");
+        response.sendRedirect ("adminLogin.xhtml");
 
         return false;
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object o, ModelAndView modelAndView) throws Exception {
-    	logger.info(request.getSession().getAttribute("clientIp")+"-------posthandle");
+    	logger.info(request.getSession().getAttribute("clientIp")+"-------posthandle------"+request.getRequestURI());
     }
 
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) throws Exception {
-       logger.info(request.getSession().getAttribute("clientIp")+"---completion");
+       logger.info(request.getSession().getAttribute("clientIp")+"---completion----------"+request.getRequestURI());
     }
 
     public void setPassUrl(List<String> passUrl) {

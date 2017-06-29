@@ -14,7 +14,7 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="getIndex.hel" target="rightFrame">首页</a></li>
+        <li><a href="getIndex.xhtml" target="rightFrame">首页</a></li>
     </ul>
 </div>
 

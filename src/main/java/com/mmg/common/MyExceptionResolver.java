@@ -35,11 +35,11 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
         if (e instanceof MyException) {
             myException = (MyException) e;
 //            if (myException.getCode().equals(ErrorConstants.LOGINFAIL) || myException.getCode().equals(ErrorConstants.LOGINNULL)) {
-            if(request.getRequestURI().equals("checkUser.hel")){
+            if(request.getRequestURI().equals("checkUser.xhtml")){
                 FlashMap flashmap = RequestContextUtils.getOutputFlashMap(request);
                 flashmap.put("errorMsg", myException.getMsg());
 //                flashmap.put("errorMsg","9");
-                return new ModelAndView("redirect:/adminLogin.hel");
+                return new ModelAndView("redirect:/adminLogin.xhtml");
             }
         } else {
         	logger.error("系统错误"+e);

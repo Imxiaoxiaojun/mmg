@@ -32,12 +32,12 @@
 
 
 <body>
-<form action = "getRuleList.hel" method = "get">
+<form action = "getRuleList.xhtml" method = "get">
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="${rc.contextPath}/admin/getIndex.hel">首页</a></li>
-        <li><a href="${rc.contextPath}/admin/getRuleList.hel">模块列表</a></li>
+        <li><a href="${rc.contextPath}/admin/getIndex.xhtml">首页</a></li>
+        <li><a href="${rc.contextPath}/admin/getRuleList.xhtml">模块列表</a></li>
     </ul>
 </div>
 

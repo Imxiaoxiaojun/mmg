@@ -20,7 +20,7 @@
         </layout>
     </appender>
     <!-- name要对应字节码文件所在的包路径，只会记录该包路径下的代码的日志 -->
-    <logger name="com.bocloud">
+    <logger name="com.mmg.controller">
         <level value="debug,info,error"/>
         <appender-ref ref="file"/>
         <appender-ref ref="console"/>
@@ -28,7 +28,7 @@
 
     <!-- Root Logger -->
     <root>
-        <priority value="debug"/>
+        <priority value="info"/>
         <appender-ref ref="console"/>
     </root>
 

@@ -23,10 +23,10 @@ public class TestController {
     @Autowired
     private HelloWorld helloWorldClient;
 
-    @RequestMapping(value = "/test/test.hel", method = RequestMethod.GET)
+    @RequestMapping(value = "/test/test.xhtml", method = RequestMethod.GET)
     public String test(HttpServletRequest request, ModelMap model, HttpServletResponse resp) throws Exception {
         System.err.println(helloWorldClient.sayHello("zhuyajun"));
         return "test.vm";
-//        return "redirect:/adminLogin.hel";
+//        return "redirect:/adminLogin.xhtml";
     }
 }

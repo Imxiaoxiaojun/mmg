@@ -16,15 +16,15 @@
         <property name="authenticationManager" ref="authenticationManager" />
         <property name="authenticationSuccessHandler" ref="successHandler" />
         &lt;!&ndash;<property name="authenticationFailureHandler" ref="failureHandler" />&ndash;&gt;
-        <property name="filterProcessesUrl" value="/admin/checkUser.hel" />
+        <property name="filterProcessesUrl" value="/admin/checkUser.xhtml" />
     </bean>-->
 <!--    <bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-        <property name="defaultTargetUrl" value="/index.hel" />
+        <property name="defaultTargetUrl" value="/index.xhtml" />
         <property name="targetUrlParameter" value="TARGETURL" />
         &lt;!&ndash;<property name="redirectStrategy" ref="redirectStrategy" />&ndash;&gt;
     </bean>
     <bean id="failureHandler" class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
-        <property name="defaultFailureUrl" value="/login.hel" />
+        <property name="defaultFailureUrl" value="/login.xhtml" />
     </bean>-->
 
    <!-- <bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">

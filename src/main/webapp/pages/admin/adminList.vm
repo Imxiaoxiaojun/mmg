@@ -38,8 +38,8 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="${rc.contextPath}/admin/getIndex.hel">首页</a></li>
-        <li><a href="${rc.contextPath}/admin/getAdminList.hel">管理员列表</a></li>
+        <li><a href="${rc.contextPath}/admin/getIndex.xhtml">首页</a></li>
+        <li><a href="${rc.contextPath}/admin/getAdminList.xhtml">管理员列表</a></li>
     </ul>
 </div>
 
@@ -49,7 +49,7 @@
 
         <ul class="toolbar">
             <li class="click"><span><img src="${rc.contextPath}/image/t01.png" /></span><a href="javascript:addAdmin()">添加</a></li>
-            <li class="click"><span><img src="${rc.contextPath}/image/t02.png" /></span><a href="type_add.jsp">修改</a></li>
+            <li class="click"><span><img src="${rc.contextPath}/image/t02.png" /></span><a href="javascript:updateAdmin()">修改</a></li>
             <li><span><img src="${rc.contextPath}/image/t03.png" /></span><a href="type_add.jsp">删除</a></li>
         </ul>
 
@@ -95,15 +95,19 @@
         <tbody>
         <form id="form1" action="#" method="get">
             <input type="hidden" name = "adminId" id="adminId" />
-                #if($adminList)
+                #if($pageInfo)
                     #set ($i=1)
-                    #foreach($admin in $adminList)
+                    #foreach($admin in $pageInfo.pageList)
                     <tr>
-                        <td><input name="adminBox" type="checkbox" value="$!{admin.adminId}" /></td>
+                        <td><input name="adminBox" type="checkbox" value="$!{admin.id}" /></td>
                         <td>$!{i}</td>
                         <td>$!{admin.adminId}</td>
                         <td>$!{admin.adminName}</td>
-                        <td>$!{admin.roleId}</td>
+                        #set ($roles = ${admin.roleId})
+                        #if($!{roles} && $roles.length() > 15)
+                    		#set ($roles = $roles.substring(0,15) + "  ...")
+                    	#end
+                        <td>$!{roles}</td>
                         <td>$!{admin.createTime}</td>
                         <td>$!{admin.lastUpdateTime}</td>
                         <td>
@@ -117,6 +121,8 @@
         <span id="EEE" ></span><br/>
         </form>
     </table>
+    <br>
+    #parse('page/page.vm') 
 </div>
 
 <script type="text/javascript">

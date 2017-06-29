@@ -23,9 +23,9 @@
     <div class="formtitle"><span>基本信息</span></div>
     <form action="#" method="post"  enctype="multipart/form-data">
         <ul class="forminfo">
-            <li><label>用户名</label><input name="user.userName" value="$!{user.userName}" type="text" class="dfinput" /></li>
-            <li><label>职业</label><input name="user.userWord" value="$!{user.userWord}" type="text" class="dfinput" /></li>
-            <li><label>我的图片</label><input type="file" name="file"/></li>
+            <li><label>用户ID</label><input name="user.userName" value="$!{user.userName}" placeholder="登录账号" type="text" class="dfinput" /></li>
+            <li><label>姓名</label><input name="user.userName" value="$!{user.userName}" type="text" class="dfinput" /></li>
+            <li><label>密码</label><input name="user.userWord" value="$!{user.userWord}" type="text" class="dfinput" /></li>
             <li><label>&nbsp;</label><input type="hidden" name="user.userId" value="$!{user.userId}"/></li>
             <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
         </ul>

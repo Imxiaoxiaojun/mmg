@@ -26,10 +26,7 @@ public class AdminServiceImplTest {
 	public void assertTru() {
 		log.debug(StringUtil.getMd5Stri("123123"));
 		int count = adminService.getObjectCount(Rule.class);
-    	Page<Rule> page = new Page();
-    	page.setCount(count);
-    	page.setCurPage(2);
-    	page.setPageSize(2);
+    	Page<Rule> page = new Page<Rule>(count,2,2);
 		List<Rule> list = adminService.getPageList(Rule.class,page);
 //		List<Role> roleList = adminService.getAllRoleList(Role.class,"1");
 //		List<Role> roleList1 = adminService.getAllRoleList(Role.class,"1");

@@ -19,7 +19,7 @@ public class DBLogger extends BaseObject{
     private String operationuser;
     @Column(name = "ipAddress", length = 30, nullable = false)
     private String ipAddress;
-    @Column(name = "macAddress", length = 30,  nullable = false)
+    @Column(name = "macAddress", length = 30)
     private String macAddress;
     @Column(name = "operationTime", length = 30,  nullable = false)
     private Timestamp operationTime;
