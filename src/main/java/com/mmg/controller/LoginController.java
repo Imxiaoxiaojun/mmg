@@ -1,11 +1,10 @@
 package com.mmg.controller;
 
-import java.sql.Timestamp;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.mmg.common.Constants;
+import com.mmg.common.ErrorConstants;
+import com.mmg.common.MyException;
+import com.mmg.service.AdminService;
+import com.mmg.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,14 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.mmg.common.ErrorConstants;
-import com.mmg.common.MyException;
-import com.mmg.entity.admin.Admin;
-import com.mmg.entity.common.DBLogger;
-import com.mmg.service.AdminService;
-import com.mmg.service.mmg.DBLoggerService;
-import com.mmg.util.DateUtil;
-import com.mmg.util.StringUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by yj on 2017/5/6.
@@ -52,7 +45,7 @@ public class LoginController {
             throw new MyException(ErrorConstants.LOGINFAIL, "用户名或密码错误");
         }
         
-        request.getSession().setAttribute("userName", userName);
+        request.getSession().setAttribute(Constants.CKUSERID, userName);
         return "redirect:adminConsole.xhtml";
         
     }

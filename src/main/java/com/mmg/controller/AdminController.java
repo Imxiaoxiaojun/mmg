@@ -13,9 +13,9 @@ import com.mmg.service.AdminService;
 import com.mmg.service.mmg.DBLoggerService;
 import com.mmg.service.mmg.IpService;
 import com.mmg.service.mmg.WeatherService;
+import com.mmg.util.CipherUtil;
 import com.mmg.util.CommonUtil;
 import com.mmg.util.DateUtil;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -52,31 +51,13 @@ public class AdminController {
     private DBLoggerService dBLoggerService;
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "adminConsole.xhtml")
-	public String getMain(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-		 String userName = (String) request.getSession().getAttribute("userName");
-	     String clientIp = (String)request.getSession().getAttribute("clientIp");
-	     String clientMac = (String)request.getSession().getAttribute("clientMac");
-		 DBLogger dbLogger = new DBLogger(userName, clientIp, clientMac,DateUtil.getFullTime(),request.getRequestURI());
-	     dBLoggerService.addDBLog(dbLogger);
-		
-		Admin admin = adminService.getAdminInfo(userName);
-        //获取最后登录时间和iP存放到session中
-        request.getSession().setAttribute("lastLoginTime",admin.getLastLoginTime());
-        request.getSession().setAttribute("lastLoginIp",admin.getLastLoginIp());
-        
-        admin.setLastLoginIp(clientIp);
-        admin.setLastLoginTime(new Timestamp(System.currentTimeMillis()));
-        admin.setLastUpdateTime(new Timestamp(System.currentTimeMillis()));
-        adminService.updateObject(admin);
-        request.getSession().setAttribute("userName",userName);
-        
-        Cookie cookie = new Cookie("autoLogin",userName);
-        cookie.setMaxAge(60 * 60 * 24 * 14);
-        cookie.setPath("/");
-        response.addCookie(cookie);
-		
-		
-		
+	public String getMain(HttpServletRequest request, HttpServletResponse response) {
+		String userId =  (String) request.getSession().getAttribute(Constants.CKUSERID);
+		//
+		if(StringUtils.isNotBlank(userId))refreshCookie(request,response);
+
+		loadUser(request,response);
+
 		String ip = (String) request.getSession().getAttribute("clientIp");
 		IpAddress ipAddress = ipService.queryLocalByIp(ip);
 
@@ -207,5 +188,36 @@ public class AdminController {
 			model.put("role", role);
 		return "/admin/showRole.vm";
 	}
+	private void loadUser(HttpServletRequest request , HttpServletResponse response){
+		String clientIp = CommonUtil.getIp(request);
+		String userName = (String)request.getSession().getAttribute(Constants.USERNAME);
 
+		Admin admin = adminService.getAdminInfo(userName);
+		//获取最后登录时间和iP存放到session中
+		request.getSession().setAttribute(Constants.LASTLOGINTIME,admin.getLastLoginTime());
+		request.getSession().setAttribute(Constants.LASTLOGINIP,admin.getLastLoginIp());
+
+		admin.setLastLoginIp(clientIp);
+		admin.setLastLoginTime(new Timestamp(System.currentTimeMillis()));
+		admin.setLastUpdateTime(new Timestamp(System.currentTimeMillis()));
+		adminService.updateObject(admin);
+		request.getSession().setAttribute("userName",userName);
+	}
+	private void refreshCookie(HttpServletRequest request, HttpServletResponse response){
+		String clientMac = (String)request.getSession().getAttribute("clientMac");
+		String clientIp = CommonUtil.getIp(request);
+		String ckUserId =  (String) request.getSession().getAttribute(Constants.CKUSERID);
+		String endTime = String.valueOf(System.currentTimeMillis() + Constants.CKVALIDTIME * 1000);
+		String original = clientIp+","+ckUserId+","+endTime;
+		String ckValue = CipherUtil.threeDesEncrypt(original);
+		Cookie cookie = new Cookie(Constants.COOKIENAME,ckValue);
+		cookie.setMaxAge(Constants.CKVALIDTIME);
+		cookie.setPath("/");
+		response.addCookie(cookie);
+		request.getSession().removeAttribute(Constants.CKUSERID);
+		request.getSession().setAttribute(Constants.USERNAME,ckUserId);
+
+		DBLogger dbLogger = new DBLogger(ckUserId, clientIp, clientMac,DateUtil.getFullTime(),request.getRequestURI());
+		dBLoggerService.addDBLog(dbLogger);
+	}
 }

@@ -8,4 +8,5 @@ public class ErrorConstants {
     public final static String LOGINFAIL = "1002";
     public final static String VERCODEFAIL = "1003";
     public final static String UNDERFINE = "9999";
+    public final static String COOKIEERROR = "7777";
 }
