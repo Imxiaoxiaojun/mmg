@@ -49,7 +49,9 @@
         <property name="viewNames" value="*.vm,*.html"/>
         <property name="exposeSpringMacroHelpers" value="true"/> 
 		<property name="requestContextAttribute" value="rc"/> 
+		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="exposeRequestAttributes" value="true" />
         <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityView" />
     </bean>
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

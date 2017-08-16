@@ -15,8 +15,8 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="${rc.contextPath}/admin/getIndex.hel">首页</a></li>
-        <li><a href="${rc.contextPath}/admin/getRoleList.hel">角色列表</a></li>
+        <li><a href="${rc.contextPath}/admin/getIndex.xhtml">首页</a></li>
+        <li><a href="${rc.contextPath}/admin/getRoleList.xhtml">角色列表</a></li>
     </ul>
 </div>
 
@@ -69,9 +69,9 @@
         </tr>
         </thead>
         <tbody>
-            #if($roleList)
+            #if($pageInfo)
                 #set ($i=1)
-                #foreach($role in $roleList)
+                #foreach($role in $pageInfo.pageList)
                     #if($role.roleType == 1)
                     <tr>
                         <td><input name="roleBox" type="checkbox" value="$!{role.roleId}" /></td>
@@ -91,7 +91,8 @@
             #end
         </tbody>
     </table>
-
+	<br>
+    #parse('page/page.vm') 
 </div>
 
 <script type="text/javascript">

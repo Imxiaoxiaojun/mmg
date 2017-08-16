@@ -1,5 +1,22 @@
 package com.mmg.controller;
 
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.mmg.common.Constants;
 import com.mmg.common.Page;
 import com.mmg.entity.admin.Admin;
@@ -16,20 +33,6 @@ import com.mmg.service.mmg.WeatherService;
 import com.mmg.util.CipherUtil;
 import com.mmg.util.CommonUtil;
 import com.mmg.util.DateUtil;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yj on 2017/5/13.

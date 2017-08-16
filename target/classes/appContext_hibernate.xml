@@ -13,6 +13,12 @@
 			value="jdbc:mysql://rm-uf662qs3mp886344ao.mysql.rds.aliyuncs.com:3306/manage?characterEncoding=UTF-8" />
 		<property name="username" value="manage" />
 		<property name="password" value="spdb1234" />
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="20" />
+		<property name="maxWait" value="60000" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
