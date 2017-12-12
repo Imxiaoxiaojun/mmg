@@ -10,6 +10,7 @@ import java.sql.Timestamp;
  * Created by yj on 2017/6/17.
  */
 @Entity
+@Table(name = "m_sys_logs")
 public class DBLogger extends BaseObject{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

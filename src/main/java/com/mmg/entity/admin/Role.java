@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  */
 @Entity
 // @Proxy(lazy = false)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "roleId" }) })
+@Table(name = "m_sys_role", uniqueConstraints = { @UniqueConstraint(columnNames = { "roleId" }) })
 public class Role extends BaseObject {
 	private static final long serialVersionUID = -763787974679876798L;
 	@Id

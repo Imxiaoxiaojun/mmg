@@ -3,12 +3,12 @@ package com.mmg.controller;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mmg.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,9 +23,9 @@ import com.mmg.entity.admin.Admin;
 import com.mmg.entity.admin.Role;
 import com.mmg.entity.admin.Rule;
 import com.mmg.entity.common.DBLogger;
-import com.mmg.entity.common.IpAddress;
-import com.mmg.entity.common.Weather;
-import com.mmg.entity.common.Weather24H;
+import com.mmg.vo.IpAddress;
+import com.mmg.vo.Weather;
+import com.mmg.vo.Weather24H;
 import com.mmg.service.AdminService;
 import com.mmg.service.mmg.DBLoggerService;
 import com.mmg.service.mmg.IpService;
@@ -222,5 +222,9 @@ public class AdminController {
 
 		DBLogger dbLogger = new DBLogger(ckUserId, clientIp, clientMac,DateUtil.getFullTime(),request.getRequestURI());
 		dBLoggerService.addDBLog(dbLogger);
+	}
+
+	public static void main(String[] args) {
+		System.out.println(StringUtil.getMd5Stri("111"));
 	}
 }

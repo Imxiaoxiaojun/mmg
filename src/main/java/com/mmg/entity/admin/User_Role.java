@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId", "roleId" }) })
+@Table(name = "m_sys_user_role", uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId", "roleId" }) })
 public class User_Role extends BaseObject {
 	private static final long serialVersionUID = -465487654987657642L;
 

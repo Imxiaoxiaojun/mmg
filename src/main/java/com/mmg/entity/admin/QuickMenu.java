@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * Created by yj on 2017/5/14.
  */
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId", "ruleId" }) })
+@Table(name = "m_sys_quickmenu", uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId", "ruleId" }) })
 public class QuickMenu extends BaseObject {
 	private static final long serialVersionUID = -1467987974346546L;
 	@Id

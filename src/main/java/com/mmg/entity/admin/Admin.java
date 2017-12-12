@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 
 @Entity
 // @Proxy(lazy = false)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId" }) })
+@Table(name = "m_sys_admin", uniqueConstraints = { @UniqueConstraint(columnNames = { "adminId" }) })
 public class Admin extends BaseObject {
 	private static final long serialVersionUID = -4567041033458776723L;
 	@Id

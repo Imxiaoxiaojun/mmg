@@ -1,6 +1,6 @@
 package com.mmg.service.mmg;
 
-import com.mmg.entity.common.Weather;
+import com.mmg.vo.Weather;
 
 public interface WeatherService {
 	public String getWeekInfoByIp(String ip);

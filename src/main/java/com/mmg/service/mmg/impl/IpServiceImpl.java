@@ -11,7 +11,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
 
 import com.mmg.common.HttpUtils;
-import com.mmg.entity.common.IpAddress;
+import com.mmg.vo.IpAddress;
 import com.mmg.service.mmg.IpService;
 import com.mmg.util.JsonUtil;
 
